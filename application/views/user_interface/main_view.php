@@ -12,6 +12,7 @@
 </head>
 <body>
 	<!-- SIDEBAR -->
+	 Joo Zaido B
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<i class="bi bi-smile"></i>
