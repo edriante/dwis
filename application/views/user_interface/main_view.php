@@ -11,7 +11,6 @@
 	<title>Admin</title>
 </head>
 <body>
-	FOOBAR
 	<!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="#" class="brand">
