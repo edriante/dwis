@@ -33,7 +33,7 @@
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="#" class="logout">
+				<a href="<?= site_url('auth/logout'); ?>" class="logout">
 					<i class="bi bi-box-arrow-right"></i>
 					<span class="text">Logout</span>
 				</a>
