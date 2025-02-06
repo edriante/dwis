@@ -58,10 +58,10 @@
 			<label for="switch-mode" class="switch-mode"></label>
 			<a href="#" class="notification">
 				<i class="bi bi-bell"></i>
-				<span class="num">8</span>
+				<span class="num">0</span>
 			</a>
 			<a href="#" class="profile">
-				<img src="img/people.png" alt="Profile">
+				<img src="assets/img/logo.png" alt="Profile">
 			</a>
 		</nav>
 		
