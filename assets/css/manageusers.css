@@ -84,6 +84,7 @@ body {
 	z-index: 500;
 	padding-bottom: 20px;
 	box-sizing: content-box;
+	margin-left: 55px;
 }
 #sidebar .brand .bx {
 	min-width: 60px;
@@ -157,10 +158,6 @@ body {
 	display: flex;
 	justify-content: center;
 }
-/* SIDEBAR */
-
-
-
 
 
 /* CONTENT */
@@ -300,6 +297,35 @@ body {
 #content nav #switch-mode:checked + .switch-mode::before {
 	left: calc(100% - (25px - 4px) - 2px);
 }
+/*users*/
+
+
+
+/*end*/
+.bg-purple {
+	background: #6f42c1;
+}
+
+.bg-red {
+	background: #dc3545;
+}
+
+.bg-green {
+	background: #28a745;
+}
+
+.bg-blue {
+	background: #007bff;
+}
+
+.text-success {
+	color: #28a745;
+}
+
+.text-danger {
+	color: #dc3545;
+}
+
 
 @media screen and (max-width: 768px) {
 	#sidebar {

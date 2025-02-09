@@ -8,5 +8,32 @@ class Main_model extends CI_Model {
         // Load the database library
         $this->load->database();
     }
+
+    // Fetch all users from the database
+    public function getUsers() {
+        return $this->db->get('users')->result_array();
+    }
+
+    // Fetch all services from the database
+    public function getServices() {
+        return $this->db->get('services')->result_array();
+    }
+
+    // Add a new service to the database
+    public function addService($data) {
+        return $this->db->insert('services', $data);
+    }
+
+    // Delete a service by ID
+    public function deleteService($id) {
+        $this->db->where('id', $id);
+        return $this->db->delete('services');
+    }
+
+    // Update a service by ID
+    public function updateService($id, $data) {
+        $this->db->where('id', $id);
+        return $this->db->update('services', $data);
+    }
 }
 ?>

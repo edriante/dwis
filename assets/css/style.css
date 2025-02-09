@@ -84,6 +84,7 @@ body {
 	z-index: 500;
 	padding-bottom: 20px;
 	box-sizing: content-box;
+	margin-left: 55px;
 }
 #sidebar .brand .bx {
 	min-width: 60px;
@@ -157,10 +158,6 @@ body {
 	display: flex;
 	justify-content: center;
 }
-/* SIDEBAR */
-
-
-
 
 
 /* CONTENT */
@@ -300,6 +297,82 @@ body {
 #content nav #switch-mode:checked + .switch-mode::before {
 	left: calc(100% - (25px - 4px) - 2px);
 }
+.custom-dashboard-title {
+	font-size: 24px;
+	margin-bottom: 20px;
+	margin-left: 45px;
+	margin-top: 20px;
+}
+
+.custom-dashboard-cards {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	margin-left: 85px;
+}
+
+.custom-card {
+	background: white;
+	border-radius: 10px;
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	width: 250px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-card-body {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.custom-card-icon {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-size: 24px;
+}
+
+.custom-card-content h5 {
+	margin: 0;
+	font-size: 14px;
+	color: gray;
+}
+
+.custom-card-content h2 {
+	margin: 5px 0;
+	font-size: 20px;
+}
+
+.bg-purple {
+	background: #6f42c1;
+}
+
+.bg-red {
+	background: #dc3545;
+}
+
+.bg-green {
+	background: #28a745;
+}
+
+.bg-blue {
+	background: #007bff;
+}
+
+.text-success {
+	color: #28a745;
+}
+
+.text-danger {
+	color: #dc3545;
+}
+
 
 @media screen and (max-width: 768px) {
 	#sidebar {

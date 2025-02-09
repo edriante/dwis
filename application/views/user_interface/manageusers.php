@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="./assets/img/download (2).png">
-	<link rel="stylesheet" href="../assets/css/style.css">
+	<link rel="stylesheet" href="../assets/css/manageusers.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
 
 	<title>Admin</title>
@@ -75,59 +75,36 @@
 				<img src="../assets/img/logo.png" alt="Profile">
 			</a>
 		</nav>
-		
-		<!-- MAIN -->
-		<main>
-		<h2 class="custom-dashboard-title">Dashboard</h2>
-    <div class="custom-dashboard-cards">
-        <div class="custom-card">
-            <div class="custom-card-body">
-                <div class="custom-card-icon bg-purple"><i class="bi bi-wallet2"></i></div>
-                <div class="custom-card-content">
-                    <h5>Users</h5>
-                    <h2>$53,000</h2>
-                    <p class="text-success">+55% since yesterday</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="custom-card">
-            <div class="custom-card-body">
-                <div class="custom-card-icon bg-red"><i class="bi bi-people"></i></div>
-                <div class="custom-card-content">
-                    <h5>Services</h5>
-                    <h2>2,300</h2>
-                    <p class="text-success">+3% since last week</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="custom-card">
-            <div class="custom-card-body">
-                <div class="custom-card-icon bg-green"><i class="bi bi-person-check"></i></div>
-                <div class="custom-card-content">
-                    <h5></h5>
-                    <h2>+3,462</h2>
-                    <p class="text-danger">-2% since last quarter</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="custom-card">
-            <div class="custom-card-body">
-                <div class="custom-card-icon bg-blue"><i class="bi bi-cart-check"></i></div>
-                <div class="custom-card-content">
-                    <h5></h5>
-                    <h2>$103,430</h2>
-                    <p class="text-success">+5% than last month</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-		</main>
-		
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+		<!--Table-->
+<main></main>
+    <h2>Manage Users</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($users as $user): ?>
+            <tr>
+                <td><?= $user['id']; ?></td>
+                <td><?= $user['username']; ?></td>
+                <td><?= $user['email']; ?></td>
+                <td><?= $user['role']; ?></td>
+                <td>
+                    <a href="#">Edit</a> | 
+                    <a href="#">Delete</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="../assets/js/script.js"></script>
 	
 </body>
