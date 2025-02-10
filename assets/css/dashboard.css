@@ -1,0 +1,49 @@
+/* dashboard.css */
+
+/* Custom styles for the dashboard */
+.custom-dashboard-cards {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.custom-card {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.custom-card:last-child {
+    margin-right: 0;
+}
+
+.chart-container {
+    height: 200px; /* Adjust this value as needed */
+    width: 50%; /* Or a specific width */
+    margin-bottom: 50px;
+    margin-left: 60px;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .custom-card {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-mode .table {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-mode .table th {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+body.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #2a2a2a;
+}
