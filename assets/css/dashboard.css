@@ -16,11 +16,30 @@
     margin-right: 0;
 }
 
+/* dashboard.css */
+
+/* Chart container styles */
 .chart-container {
-    height: 200px; /* Adjust this value as needed */
-    width: 50%; /* Or a specific width */
-    margin-bottom: 50px;
-    margin-left: 60px;
+    display: flex; /* Use flexbox to align charts side by side */
+    justify-content: space-between; /* Space between charts */
+    margin-top: 20px; /* Add some margin on top */
+}
+
+.chart-box {
+    flex: 1; /* Allow each chart box to take equal space */
+    margin-right: 50px; /* Add some space between the charts */
+    margin-left: 50px;
+}
+
+/* Remove margin from the last chart box */
+.chart-box:last-child {
+    margin-right: 0; /* No margin on the last chart */
+}
+
+/* Set specific height for the charts */
+canvas {
+    width: 100% !important; /* Make canvas take full width of the box */
+    height: 250px !important; /* Set a specific height for the charts */
 }
 
 /* Dark mode styles */

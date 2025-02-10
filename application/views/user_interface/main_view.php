@@ -110,21 +110,27 @@
                     </div>
                 </div>
 
-				<div class="custom-card">
-					<div class="custom-card-body">
-						<div class="custom-card-icon bg-blue"><i class="bi bi-cart-check"></i></div>
-						<div class="custom-card-content">
-							<h5></h5>
-							<h2>$103,430</h2>
-							<p class="text-success">+5% than last month</p>
-						</div>
-					</div>
-				</div>
+                <div class="custom-card">
+                    <div class="custom-card-body">
+                        <div class="custom-card-icon bg-blue"><i class="bi bi-cart-check"></i></div>
+                        <div class="custom-card-content">
+                            <h5>Revenue</h5>
+                            <h2>$103,430</h2>
+                            <p class="text-success">+5% than last month</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="chart-container">
-                <h3>Charts and Graphs</h3>
-                <canvas id="myChart"></canvas>
+            <div class="chart-container d-flex justify-content-between">
+                <div class="chart-box">
+                    <h3>Chart</h3>
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3>Graph</h3>
+                    <canvas id="mySecondChart"></canvas>
+                </div>
             </div>
 
             <div class="container mt-4">
@@ -133,7 +139,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Timestamp</th>
-                            <th scope="col">User  </th>
+                            <th scope="col">User </th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -154,6 +160,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../assets/js/dashboard.js"></script> <!-- Link to the new JavaScript file -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="../assets/js/manageusers.js"></script> <!-- Use the same JS file for consistency -->
+    <script src="../assets/js/manageusers.js"></script> <!-- Use the same JS file for consistency -->
 </body>
 </html>
