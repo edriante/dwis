@@ -5,12 +5,17 @@ class Main_controller extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        // Load the Main_model
+        // Load the Main_model and Activity_model
         $this->load->model('Main_model');
+        $this->load->model('Activity_model'); // Load the Activity model
     }
 
     public function index() {
         $data['title'] = 'Home Page';
+        
+        // Fetch activity logs
+        $data['activity_logs'] = $this->Activity_model->get_activity_logs(); // Fetch logs from the model
+        
         $this->load->view('user_interface/main_view', $data);
     }
 

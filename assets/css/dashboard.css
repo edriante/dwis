@@ -1,0 +1,68 @@
+/* dashboard.css */
+
+/* Custom styles for the dashboard */
+.custom-dashboard-cards {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.custom-card {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.custom-card:last-child {
+    margin-right: 0;
+}
+
+/* dashboard.css */
+
+/* Chart container styles */
+.chart-container {
+    display: flex; /* Use flexbox to align charts side by side */
+    justify-content: space-between; /* Space between charts */
+    margin-top: 20px; /* Add some margin on top */
+}
+
+.chart-box {
+    flex: 1; /* Allow each chart box to take equal space */
+    margin-right: 50px; /* Add some space between the charts */
+    margin-left: 50px;
+}
+
+/* Remove margin from the last chart box */
+.chart-box:last-child {
+    margin-right: 0; /* No margin on the last chart */
+}
+
+/* Set specific height for the charts */
+canvas {
+    width: 100% !important; /* Make canvas take full width of the box */
+    height: 250px !important; /* Set a specific height for the charts */
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .custom-card {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-mode .table {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-mode .table th {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+body.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #2a2a2a;
+}
