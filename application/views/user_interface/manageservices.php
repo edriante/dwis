@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Services</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="../assets/img/download (2).png">
-    <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
+    <link rel="stylesheet" href="../assets/css/manageusers.css"> <!-- Use the same CSS file for consistency -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Manage Services</title>
 </head>
 <body>
     <!-- SIDEBAR -->
@@ -54,31 +54,31 @@
     <!-- CONTENT -->
     <section id="content">
         <nav>
-			<i class="bi bi-list"></i>
-			
-			<form action="#">
-				
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				
-			</a>
-			<a href="#" class="profile">
-				<img src="../assets/img/logo.png" alt="Profile">
-			</a>
-		</nav>
+            <i class="bi bi-list"></i>
+            <form action="#">
+                <!-- Search form can be added here if needed -->
+            </form>
+            <input type="checkbox" id="switch-mode" hidden>
+            <label for="switch-mode" class="switch-mode"></label>
+            <a href="#" class="notification"></a>
+            <a href="#" class="profile">
+                <img src="../assets/img/logo.png" alt="Profile">
+            </a>
+        </nav>
 
         <main>
-            <div class="container mt-4">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2 class="custom-dashboard-title">Manage Services</h2>
-                    <a href="<?= site_url('Main_controller/addServices'); ?>" class="btn btn-primary">Add New Service</a>
-                </div>
-                <table class="table table-bordered table-striped table-hover">
+            <h2 class="custom-dashboard-title">Manage Services</h2>
+            <div class="search-container mb-3">
+                <input type="text" placeholder="Search services..." id="serviceSearch" class="form-control" style="width: 300px; display: inline-block;">
+                <button class="btn btn-primary">Search</button>
+            </div>
+            
+
+                <table>
+                    
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">ID</th>
                             <th scope="col">Service Name</th>
                             <th scope="col">Description</th>
                             <th scope="col">Price</th>
@@ -93,18 +93,22 @@
                             <td><?= htmlspecialchars($service->description); ?></td>
                             <td>$<?= number_format($service->price, 2); ?></td>
                             <td>
-                                <a href="<?= site_url('Main_controller/editService/' . $service->id); ?>" class="btn btn-warning btn-sm btn-custom">Edit</a>
-                                <a href="<?= site_url('Main_controller/deleteService/' . $service->id); ?>" class="btn btn-danger btn-sm btn-custom" onclick="return confirm('Are you sure you want to delete this service?');">Delete</a>
+                                <a href="<?= site_url('Main_controller/editService/' . $service->id); ?>" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="<?= site_url('Main_controller/deleteService/' . $service->id); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this service?');">Delete</a>
                             </td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+            
+            <div class="d-flex justify-content-between align-items-center mb-3" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+                    
+                <a href="<?= site_url('Main_controller/addServices'); ?>" class="btn btn-primary">Add New Service</a>
             </div>
         </main>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/manageusers.js"></script> <!-- Use the same JS file for consistency -->
 </body>
 </html>
