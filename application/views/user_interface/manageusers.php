@@ -13,9 +13,9 @@
 <body>
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
-			
-			<span class="text">AdminHub</span>
+    <a href="<?= site_url('Main_controller/index'); ?>" class="brand">
+			<img src="../assets/img/download (2).png" alt="A">
+			<span class="text">dmin</span>
 		</a>
 		<ul class="side-menu top">
 			<li>
@@ -42,6 +42,12 @@
     <a href="<?= site_url('Main_controller/manageServices'); ?>">
         <i class="bi bi-tools"></i>
         <span class="text">Manage Services</span>
+    </a>
+</li>
+<li>
+    <a href="<?= site_url('Main_controller/manageCategories'); ?>">
+        <i class="bi bi-tag"></i>
+        <span class="text">Categories</span>
     </a>
 </li>
 		</ul>

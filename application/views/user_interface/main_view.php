@@ -7,15 +7,15 @@
     <link rel="icon" href="../assets/img/download (2).png">
 	<link rel="stylesheet" href="../assets/css/style.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 	<title>Admin</title>
 </head>
 <body>
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
-			
-			<span class="text">AdminHub</span>
+    <a href="<?= site_url('Main_controller/index'); ?>" class="brand">
+			<img src="../assets/img/download (2).png" alt="A">
+			<span class="text">dmin</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
@@ -78,7 +78,7 @@
 				
 			</a>
 			<a href="#" class="profile">
-				<img src="./assets/img/logo.png" alt="Profile">
+				<img src="../assets/img/logo.png" alt="Profile">
 			</a>
 		</nav>
 		
