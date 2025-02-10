@@ -44,6 +44,12 @@
         <span class="text">Manage Services</span>
     </a>
 </li>
+<li>
+    <a href="<?= site_url('Main_controller/manageCategories'); ?>">
+        <i class="bi bi-tag"></i>
+        <span class="text">Categories</span>
+    </a>
+</li>
 		</ul>
 		<ul class="side-menu">
 			<li>
@@ -72,7 +78,7 @@
 				
 			</a>
 			<a href="#" class="profile">
-				<img src="../assets/img/logo.png" alt="Profile">
+				<img src="./assets/img/logo.png" alt="Profile">
 			</a>
 		</nav>
 		
