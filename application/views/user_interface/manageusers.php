@@ -18,13 +18,13 @@
 			<span class="text">AdminHub</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
+			<li>
 				<a href="<?= site_url('Main_controller/index'); ?>">
 					<i class="bi bi-house-door"></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
-            <li>
+            <li class="active">
     <a href="<?= site_url('Main_controller/manageUsers'); ?>">
         <i class="bi bi-people"></i>
         <span class="text">Manage Users</span>
