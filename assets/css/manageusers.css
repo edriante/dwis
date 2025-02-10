@@ -297,11 +297,118 @@ body {
 #content nav #switch-mode:checked + .switch-mode::before {
 	left: calc(100% - (25px - 4px) - 2px);
 }
-/*users*/
+
+/*tables*/
+
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: transparent; /* No bold white container */
+}
+
+/* Title */
+main h2 {
+    float: left;
+    font-size: 22px;
+    color: #333; /* Neutral dark gray */
+}
+
+/* Search bar */
+.search-container {
+    float: right;
+	gap: 8px;
+	display: flex;
+	
+}
+
+.search-container input {
+    padding: 8px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    background: #f8f8f8;
+    color: #333;
+    outline: none;
+    flex: 1;
+	width: 350px;
+}
+
+.search-container button {
+    padding: 8px 12px;
+    border: 1px solid #bbb;
+    background: #ddd;
+    color: #333;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-container button:hover {
+    background: #ccc;
+}
 
 
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 50px;
+    background: transparent;
+}
 
-/*end*/
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Slightly visible border */
+}
+
+th {
+    background: #e0e0e0; /* Neutral light gray */
+    color: #333;
+}
+
+/* Profile Image */
+td img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Action icons */
+.action-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-icons a {
+    color: #666;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.action-icons a:hover {
+    color: #d9534f;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    main h2, .search-container {
+        float: none;
+        text-align: center;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    .action-icons {
+        justify-content: center;
+    }
+}
+
 .bg-purple {
 	background: #6f42c1;
 }

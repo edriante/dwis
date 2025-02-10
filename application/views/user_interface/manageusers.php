@@ -18,13 +18,13 @@
 			<span class="text">AdminHub</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
+			<li>
 				<a href="<?= site_url('Main_controller/index'); ?>">
 					<i class="bi bi-house-door"></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
-            <li>
+            <li class="active">
     <a href="<?= site_url('Main_controller/manageUsers'); ?>">
         <i class="bi bi-people"></i>
         <span class="text">Manage Users</span>
@@ -76,12 +76,17 @@
 			</a>
 		</nav>
 		<!--Table-->
-<main></main>
+		<main>
     <h2>Manage Users</h2>
-    <table border="1">
+    <div class="search-container">
+        <input type="text" placeholder="Search users..." id="userSearch">
+		<button>Search</button>
+    </div>
+    <table>
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Profile</th>
                 <th>Username</th>
                 <th>Email</th>
                 <th>Role</th>
@@ -92,18 +97,23 @@
             <?php foreach ($users as $user): ?>
             <tr>
                 <td><?= $user['id']; ?></td>
+                <td><img src="<?= $user['img']; ?>" alt="Profile"></td>
                 <td><?= $user['username']; ?></td>
                 <td><?= $user['email']; ?></td>
                 <td><?= $user['role']; ?></td>
                 <td>
-                    <a href="#">Edit</a> | 
-                    <a href="#">Delete</a>
+                    <div class="action-icons">
+                        <a href="#" class="edit"><i class="fa-solid fa-pen"></i></a>
+                        <a href="#" class="delete"><i class="fa-solid fa-trash"></i></a>
+                    </div>
                 </td>
             </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
-    </main>
+</main>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="../assets/js/manageusers.js"></script>
 	
