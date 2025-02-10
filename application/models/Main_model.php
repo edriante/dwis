@@ -35,5 +35,18 @@ class Main_model extends CI_Model {
         $this->db->where('id', $id);
         return $this->db->update('services', $data);
     }
+    // Add a new category to the database
+    public function addCategory($data) {
+        return $this->db->insert('categories', $data);
+    }
+    // Fetch all category from the database
+    public function getCategory() {
+        return $this->db->get('categories')->result_array();
+    }
+    //Update a category by ID
+    public function updateCategory($id, $data) {
+        $this->db->where('id', $id);
+        return $this->db->update('categories', $data);
+    }
 }
 ?>

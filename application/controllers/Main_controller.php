@@ -30,5 +30,14 @@ class Main_controller extends CI_Controller {
         $data['services'] = $this->Main_model->getServices();
         $this->load->view('user_interface/manageservices', $data);
     }
+    public function addCategory() {
+        $data['title'] = 'Add Category';
+        $this->load->view('user_interface/addcategory', $data);
+    }
+    public function manageCategories() {
+        $data['title'] = 'Manage Categories';
+        $data['categories'] = $this->Main_model->getCategory();
+        $this->load->view('user_interface/category', $data);
+    }
 }
 ?>
