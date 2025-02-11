@@ -1,4 +1,3 @@
-// dashboard.js
 
 // Initialize the first chart
 const ctx1 = document.getElementById('myChart').getContext('2d');
@@ -7,7 +6,7 @@ const myChart = new Chart(ctx1, {
     data: {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [{
-            label: 'My First Dataset',
+            label: 'Yearly Services',
             data: [65, 59, 80, 81, 56, 55, 40],
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
             borderColor: 'rgba(75, 192, 192, 1)',

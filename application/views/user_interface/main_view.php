@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="../assets/img/download (2).png">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/dashboard.css"> <!-- Link to the new CSS file -->
+    <link rel="stylesheet" href="../assets/css/dashboard.css"> 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <title>Admin</title>
@@ -77,24 +77,28 @@
         <main>
             <h2 class="custom-dashboard-title">Dashboard</h2>
             <div class="custom-dashboard-cards">
+    <div class="custom-card">
+        <div class="custom-card-body">
+            <div class="custom-card-icon bg-purple"><i class="bi bi-people"></i></div>
+            <div class="custom-card-content">
+                <h5>Users</h5>
+                <h2><?php echo number_format($totalUsers); ?></h2>
+                <p class="text-<?php echo ($usersToday > 0) ? 'success' : 'danger'; ?>">
+    <?php echo ($usersToday > 0) ? '+' . $usersToday . ' users today' : '0 users today'; ?>
+                </p>
+            </div>
+        </div>
+    </div>
                 <div class="custom-card">
                     <div class="custom-card-body">
-                        <div class="custom-card-icon bg-purple"><i class="bi bi-wallet2"></i></div>
-                        <div class="custom-card-content">
-                            <h5>Users</h5>
-                            <h2>$53,000</h2>
-                            <p class="text-success">+55% since yesterday</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="custom-card">
-                    <div class="custom-card-body">
-                        <div class="custom-card-icon bg-red"><i class="bi bi-people"></i></div>
+                        <div class="custom-card-icon bg-red"><i class="bi bi-gear"></i></div>
                         <div class="custom-card-content">
                             <h5>Services</h5>
-                            <h2>2,300</h2>
-                            <p class="text-success">+3% since last week</p>
+                            <h2><?php echo number_format($totalService); ?></h2>
+                            <p class="text-<?php echo ($recentServices > 0) ? 'success' : 'danger'; ?>">
+                              <?php echo ($recentServices > 0) ? '+' . $recentServices . ' services added this week' : '0 services added this week'; ?>
+                            </p>
+
                         </div>
                     </div>
                 </div>
@@ -132,34 +136,12 @@
                     <canvas id="mySecondChart"></canvas>
                 </div>
             </div>
-
-            <div class="container mt-4">
-                <h3>User Activity Log</h3>
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Timestamp</th>
-                            <th scope="col">User </th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($activity_logs as $log): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($log['timestamp']); ?></td>
-                            <td><?= htmlspecialchars($log['user']); ?></td>
-                            <td><?= htmlspecialchars($log['action']); ?></td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
         </main>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="../assets/js/dashboard.js"></script> <!-- Link to the new JavaScript file -->
+    <script src="../assets/js/dashboard.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/manageusers.js"></script> <!-- Use the same JS file for consistency -->
+    <script src="../assets/js/manageusers.js"></script> 
 </body>
 </html>

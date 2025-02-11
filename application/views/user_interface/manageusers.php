@@ -92,29 +92,31 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Profile</th>
                 <th>Username</th>
+                <th>Fullname</th>
                 <th>Email</th>
-                <th>Role</th>
+                <th>Age</th>
+                <th>Gender</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($users as $user): ?>
-            <tr>
-                <td><?= $user['id']; ?></td>
-                <td><img src="<?= $user['img']; ?>" alt="Profile"></td>
-                <td><?= $user['username']; ?></td>
-                <td><?= $user['email']; ?></td>
-                <td><?= $user['role']; ?></td>
-                <td>
-                    <div class="action-icons">
-                        <a href="#" class="edit"><i class="fa-solid fa-pen"></i></a>
-                        <a href="#" class="delete"><i class="fa-solid fa-trash"></i></a>
-                    </div>
-                </td>
-            </tr>
-            <?php endforeach; ?>
+        <?php foreach ($users as $user): ?>
+        <tr>
+            <td><?= $user['id']; ?></td>
+            <td><?= $user['username']; ?></td>
+            <td><?= $user['fullname']; ?></td>
+            <td><?= $user['email']; ?></td>
+            <td><?= $user['age']; ?></td>
+            <td><?= $user['gender']; ?></td>
+            <td>
+            <div class="action-icons">
+    <a href="#" class="edit"><i class="bi bi-pencil"></i></a>
+    <a href="#" class="delete"><i class="bi bi-trash"></i></a>
+</div>
+            </td>
+        </tr>
+    <?php endforeach; ?>
         </tbody>
     </table>
 </main>
