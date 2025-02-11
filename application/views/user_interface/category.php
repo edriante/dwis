@@ -24,7 +24,7 @@
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
-            <li class="active">
+            <li>
     <a href="<?= site_url('Main_controller/manageUsers'); ?>">
         <i class="bi bi-people"></i>
         <span class="text">Manage Users</span>
@@ -44,7 +44,7 @@
         <span class="text">Manage Services</span>
     </a>
 </li>
-<li>
+<li class="active">
     <a href="<?= site_url('Main_controller/manage  Categories'); ?>">
         <i class="bi bi-tag"></i>
         <span class="text">Categories</span>
