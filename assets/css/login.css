@@ -28,12 +28,11 @@ h3 {
 }
 
 .profile-img {
-    width: 120px;
-    height: 40px;
+    width: 100px; /* Set the width of the image */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 100px; /* Set a maximum height */
+    object-fit: contain; /* Ensure the entire logo is visible */
     
-   
-    margin: 0 auto 15px;
-    border: none;
 }
 
 .form-control {
