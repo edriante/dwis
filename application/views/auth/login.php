@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
-    <link rel="icon" href="../assets/img/download (2).png">
+    <link rel="icon" href="<?= base_url('assets/img/download (2).png') ?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/css/login.css'); ?>">
 </head>
 <body>
     <div class="login-container">
-        <img src="../assets/img/logo.png" alt="Profile" class="profile-img">
+    <img src="<?= base_url('assets/img/logo.png') ?>" alt="Profile" class="profile-img">
+    
         <h3>ADMIN</h3>
         <?php if($this->session->flashdata('error')): ?>
             <div class="alert alert-danger"> <?= $this->session->flashdata('error') ?> </div>
