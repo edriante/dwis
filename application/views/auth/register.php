@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Register</title>
+    <link rel="icon" href="../assets/img/download (2).png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets/css/login.css'); ?>"> <!-- Link to the same CSS file -->
 </head>
-<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
-    <div class="card shadow-lg p-4" style="width: 350px;">
-        <h3 class="text-center">Admin Register</h3>
+<body>
+    <div class="login-container">
+        <img src="<?= base_url('assets/img/logo.png'); ?>" alt="Profile" class="profile-img"> <!-- Use base_url for the logo -->
+        <h3>ADMIN REGISTER</h3>
         <?php if($this->session->flashdata('error')): ?>
             <div class="alert alert-danger"> <?= $this->session->flashdata('error') ?> </div>
         <?php endif; ?>
@@ -17,20 +20,19 @@
         <?php endif; ?>
         <form action="<?= base_url('auth/register_process') ?>" method="POST">
             <div class="mb-3">
-                <label class="form-label">Username</label>
-                <input type="text" name="username" class="form-control" required>
+                <input type="text" name="username" class="form-control" placeholder="Username" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">Email</label>
-                <input type="email" name="email" class="form-control" required>
+                <input type="email" name="email" class="form-control" placeholder="Email" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" required>
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
             </div>
             <button type="submit" class="btn btn-primary w-100">Register</button>
         </form>
-        <p class="text-center mt-3">Already have an account? <a href="<?= base_url('auth/login') ?>">Login</a></p>
+        <div class="forgot-link">
+            <p class="text-center mt-3">Already have an account? <a href="<?= base_url('auth/login') ?>">Login</a></p>
+        </div>
     </div>
 </body>
 </html>
