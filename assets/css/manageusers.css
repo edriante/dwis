@@ -166,6 +166,10 @@ body {
 	margin-right: 3px;
 	margin: left 0;;
 }
+#sidebar .side-menu .logout:hover {
+	cursor: pointer; 
+	color: red; 
+}
 /* CONTENT */
 #content {
 	position: relative;

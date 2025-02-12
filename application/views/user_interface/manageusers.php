@@ -52,12 +52,12 @@
 </li>
 		</ul>
 		<ul class="side-menu">
-			<li>
-				<a href="<?= site_url('auth/logout'); ?>" class="logout">
-					<i class="bi bi-box-arrow-right"></i>
-					<span class="text">Logout</span>
-				</a>
-			</li>
+        <li>
+                <a id="logoutBtn" class="logout">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span class="text">Logout</span>
+                </a>
+            </li>
 		</ul>
 	</section>
 	
@@ -121,9 +121,10 @@
     </table>
 </main>
 
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="../assets/js/manageusers.js"></script>
+    <script src="<?= base_url('assets/js/logout.js'); ?>"></script>
 	
 </body>
 </html>

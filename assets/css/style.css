@@ -46,11 +46,6 @@ body {
 	background: var(--grey);
 	overflow-x: hidden;
 }
-
-
-
-
-
 /* SIDEBAR */
 #sidebar {
 	position: fixed;
@@ -170,6 +165,10 @@ body {
     object-fit: cover;
 	margin-right: 3px;
 	margin: left 0;;
+}
+#sidebar .side-menu .logout:hover {
+	cursor: pointer; 
+	color: red; 
 }
 
 /* CONTENT */
