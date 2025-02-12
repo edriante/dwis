@@ -108,9 +108,9 @@
                     <div class="custom-card-body">
                         <div class="custom-card-icon bg-green"><i class="bi bi-person-check"></i></div>
                         <div class="custom-card-content">
-                            <h5>New Users</h5>
-                            <h2>+3,462</h2>
-                            <p class="text-danger">-2% since last quarter</p>
+                            <h5>Card 3</h5>
+                            <h2>desc</h2>
+                            <p class="text-danger">""</p>
                         </div>
                     </div>
                 </div>
@@ -119,9 +119,9 @@
                     <div class="custom-card-body">
                         <div class="custom-card-icon bg-blue"><i class="bi bi-cart-check"></i></div>
                         <div class="custom-card-content">
-                            <h5>Revenue</h5>
-                            <h2>$103,430</h2>
-                            <p class="text-success">+5% than last month</p>
+                            <h5>Card 4</h5>
+                            <h2>desc</h2>
+                            <p class="text-success">""</p>
                         </div>
                     </div>
                 </div>
