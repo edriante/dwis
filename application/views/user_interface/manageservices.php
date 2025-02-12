@@ -42,15 +42,14 @@
                 </a>
             </li>
             <li>
-    <a href="<?= site_url('Main_controller/manageCategories'); ?>">
-        <i class="bi bi-tag"></i>
-        <span class="text">Categories</span>
-    </a>
-</li>
-		
+                <a href="<?= site_url('Main_controller/manageCategories'); ?>">
+                    <i class="bi bi-tag"></i>
+                    <span class="text">Categories</span>
+                </a>
+            </li>
         </ul>
         <ul class="side-menu">
-        <li>
+            <li>
                 <a id="logoutBtn" class="logout">
                     <i class="bi bi-box-arrow-right"></i>
                     <span class="text">Logout</span>
@@ -63,9 +62,7 @@
     <section id="content">
         <nav>
             <i class="bi bi-list"></i>
-            <form action="#">
-                <!-- Search form can be added here if needed -->
-            </form>
+            <form action="#"></form>
             <input type="checkbox" id="switch-mode" hidden>
             <label for="switch-mode" class="switch-mode"></label>
             <a href="#" class="notification"></a>
@@ -81,48 +78,51 @@
                 <button class="btn btn-primary">Search</button>
             </div>
             <table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Service Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php if (!empty($services)): ?>
-            <?php foreach ($services as $service): ?>
-                <tr>
-                    <td><?= $service['id']; ?></td>
-                    <td><?= $service['name']; ?></td>   
-                    <td><?= $service['description']; ?></td>
-                    <td><?= $service['price']; ?></td>
-                    <td><?= $service['category']; ?></td>
-                    <td><?= $service['status']; ?></td>
-                    <td>
-                        <div class="action-icons">
-                            <a href="<?= base_url('services/edit/' . $service['id']); ?>" class="edit">
-                                <i class="bi bi-pencil"></i>
-                            </a>
-                            <a href="<?= base_url('services/delete/' . $service['id']); ?>" class="delete" onclick="return confirm('Are you sure you want to delete this service?');">
-                                <i class="bi bi-trash"></i>
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <tr>
-                <td colspan="7" class="text-center">No services available</td>
-            </tr>
-        <?php endif; ?>
-    </tbody>
-</table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Service Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (!empty($services)): ?>
+                        <?php foreach ($services as $service): ?>
+                            <tr>
+                                <td><?= $service['id']; ?></td>
+                                <td><?= $service['name']; ?></td>   
+                                <td><?= $service['description']; ?></td>
+                                <td><?= $service['price']; ?></td>
+                                <td><?= $service['category']; ?></td>
+                                <td><?= $service['status']; ?></td>
+                                <td>
+                                    <div class="action-icons">
+                                        <a href="<?= base_url('Main_controller/edit_service/' . $service['id']); ?>" class="edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <a href="<?= site_url('Main_controller/delete_service/' . $service['id']); ?>" 
+                                           class="delete" 
+                                           onclick="return confirm('Are you sure you want to delete this service?');">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="7" class="text-center">No services available</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
         </main>
     </section>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/manageusers.js"></script> 

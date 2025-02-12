@@ -41,18 +41,49 @@ class Main_controller extends CI_Controller {
         $this->load->view('user_interface/manageusers', $data);
     }
 
-    public function updateUser($id) {
+    public function updateUser($id = null) {
+        if ($id === null) {
+            show_error('Missing User ID', 400);
+        }
+        
         $data = $this->input->post();
+        
         if ($this->Main_model->updateUser($id, $data)) {
-            redirect('main_controller/manageUsers');
+            redirect('Main_controller/manageUsers');
+        } else {
+            show_error('Failed to update user.', 500);
         }
     }
+    
 
-    public function deleteUser($id) {
+    public function deleteUser($id = null) {
+        if ($id === null) {
+            show_error('Missing User ID', 400);
+        }
+        
         if ($this->Main_model->deleteUser($id)) {
-            redirect('main_controller/manageUsers');
+            redirect('Main_controller/manageUsers');
+        } else {
+            show_error('Failed to delete user.', 500);
         }
     }
+    
+    public function delete_service($id = null) {
+        if ($id === null) {
+            show_404(); // If no ID is passed, return 404
+        }
+    
+        $deleted = $this->Main_model->delete_service($id);
+        if ($deleted) {
+            $this->session->set_flashdata('success', 'Service deleted successfully.');
+        } else {
+            $this->session->set_flashdata('error', 'Failed to delete service.');
+        }
+    
+        redirect('Main_controller/manageServices'); // Redirect back to the services list
+    }
+    
+    
 
     public function addCategory() {
         $data['title'] = 'Add Category';
@@ -79,5 +110,49 @@ class Main_controller extends CI_Controller {
             redirect('main_controller/manageServices');
         }
     }
+
+    public function edit_user($id) {
+        $data['user'] = $this->Main_model->get_user_by_id($id);
+        $this->load->view('admin/edit_user', $data);
+    }
+    
+    public function update_user() {
+        $this->Main_model->update_user($this->input->post());
+        redirect('Main_controller/manageUsers');
+    }
+    
+    public function edit_service($id) {
+        $data['service'] = $this->Main_model->get_service_by_id($id);
+    
+        if (!$data['service']) {
+            show_404(); // Show 404 if service doesn't exist
+        }
+    
+        $data['categories'] = $this->Main_model->get_categories(); // Fetch categories
+        $this->load->view('admin/edit_service', $data);
+    }    
+    
+    
+    public function update_service($id = null) {
+        if (!$id) {
+            show_error('Service ID is missing.', 500);
+        }
+    
+        $data = array(
+            'name' => $this->input->post('name'),
+            'description' => $this->input->post('description'),
+            'price' => $this->input->post('price'),
+            'status' => $this->input->post('status'),
+            'category' => $this->input->post('category')
+        );
+    
+        if ($this->Main_model->update_service($id, $data)) {
+            redirect('Main_controller/manageServices');
+        } else {
+            show_error('Failed to update service.', 500);
+        }
+    }
+    
+    
 }
 ?>

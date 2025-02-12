@@ -35,6 +35,11 @@ class Main_model extends CI_Model {
         return $this->db->delete('users');
     }
 
+    public function delete_service($id) {
+        return $this->db->where('id', $id)->delete('services');
+    }
+    
+
     // Count total users
     public function countUsers() {
         return $this->db->count_all('users');
@@ -79,5 +84,33 @@ class Main_model extends CI_Model {
     return $this->db->count_all_results('services');
     }
 
+    public function get_user_by_id($id) {
+        return $this->db->get_where('users', ['id' => $id])->row_array();
+    }
+    
+    public function update_user($id, $data) {
+        $this->db->where('id', $id);
+        return $this->db->update('users', $data);
+    }
+    
+    public function get_service_by_id($id) {
+        $query = $this->db->get_where('services', ['id' => $id]);
+        return $query->row_array();  // Fetch the row as an array
+    }
+    
+    
+    public function update_service($id, $data) {
+        $this->db->where('id', $id);
+        return $this->db->update('services', $data);
+    }
+    
+    
+
+    public function get_categories() {
+        $query = $this->db->get('categories'); // Fetch all categories from the database
+        return $query->result_array(); // Return the result as an array
+    }
+    
+    
 }
 ?>
