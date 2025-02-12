@@ -1,6 +1,5 @@
 /* dashboard.css */
 
-/* Custom styles for the dashboard */
 .custom-dashboard-cards {
     display: flex;
     justify-content: space-between;
@@ -16,19 +15,18 @@
     margin-right: 0;
 }
 
-/* dashboard.css */
-
-/* Chart container styles */
 .chart-container {
     display: flex; /* Use flexbox to align charts side by side */
     justify-content: space-between; /* Space between charts */
     margin-top: 20px; /* Add some margin on top */
+    
 }
 
 .chart-box {
     flex: 1; /* Allow each chart box to take equal space */
     margin-right: 50px; /* Add some space between the charts */
     margin-left: 50px;
+   
 }
 
 /* Remove margin from the last chart box */
@@ -38,8 +36,8 @@
 
 /* Set specific height for the charts */
 canvas {
-    width: 100% !important; /* Make canvas take full width of the box */
-    height: 250px !important; /* Set a specific height for the charts */
+    width: 100% !important; 
+    height: 60vh !important; 
 }
 
 /* Dark mode styles */

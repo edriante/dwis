@@ -18,7 +18,7 @@ class Main_model extends CI_Model {
         return $this->db->get_where('users', ['id' => $id])->row_array();
     }
 
-    // Add a services
+    // Add a service
     public function addService($data) {
         return $this->db->insert('services', $data);
     }
@@ -60,28 +60,32 @@ class Main_model extends CI_Model {
         return $this->db->insert('categories', $data);
     }
 
-        // Update a category
+    // Update a category
     public function updateCategory($id, $data) {
         $this->db->where('id', $id);
         return $this->db->update('categories', $data);
     }
-       // Count total users
+
+    // Count users registered today
     public function countUsersToday() {
         $this->db->where('DATE(created_at)', date('Y-m-d'));
         return $this->db->count_all_results('users');
     }
+
+    // Count total users
     public function countTotalUsers() {
         return $this->db->count_all('users'); 
     }
-    
-       // Count total services
+
+    // Count total services
     public function countTotalServices() {
-    return $this->db->count_all('services'); // Counts all services in the table
+        return $this->db->count_all('services'); 
     }
-      // Count services added in the last 7 days
+
+    // Count services added in the last 7 days
     public function countRecentServices() {
-    $this->db->where('created_at >=', date('Y-m-d', strtotime('-7 days')));
-    return $this->db->count_all_results('services');
+        $this->db->where('created_at >=', date('Y-m-d', strtotime('-7 days')));
+        return $this->db->count_all_results('services');
     }
 
     public function get_user_by_id($id) {
@@ -109,6 +113,40 @@ class Main_model extends CI_Model {
     public function get_categories() {
         $query = $this->db->get('categories'); // Fetch all categories from the database
         return $query->result_array(); // Return the result as an array
+    }
+    
+    
+    // Get service names and their count (for chart)
+    public function get_services_count() {
+        $this->db->select('category, COUNT(*) as count');
+        $this->db->group_by('category');
+        $query = $this->db->get('services'); 
+        return $query->result();
+    }
+    public function get_weekly_users() {
+        // Initialize an array for all 7 days with 0 counts
+        $days = [
+            'Monday' => 0,
+            'Tuesday' => 0,
+            'Wednesday' => 0,
+            'Thursday' => 0,
+            'Friday' => 0,
+            'Saturday' => 0,
+            'Sunday' => 0
+        ];
+    
+        // Fetch users grouped by the day of the week
+        $this->db->select("DAYNAME(created_at) as day, COUNT(*) as count");
+        $this->db->where("created_at >=", date('Y-m-d', strtotime('-6 days'))); // Last 7 days
+        $this->db->group_by("DAYNAME(created_at)");
+        $query = $this->db->get("users");
+    
+        // Fill the days array with actual data
+        foreach ($query->result() as $row) {
+            $days[$row->day] = (int) $row->count;
+        }
+    
+        return $days;
     }
     
     

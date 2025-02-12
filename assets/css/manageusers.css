@@ -183,6 +183,9 @@ body {
 }
 
 /* NAVBAR */
+.dark .bi-list {
+    color: white; 
+}
 #content nav {
 	height: 56px;
 	background: var(--light);

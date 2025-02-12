@@ -197,6 +197,30 @@ body {
 	left: 0;
 	z-index: 1000;
 }
+.dark .bi-list {
+    color: white; 
+}
+/* Dark mode styles */
+.dark .custom-card-icon {
+    background-color: #333 !important; /* Darker background for icons */
+}
+
+.dark .custom-card-icon i {
+    color: #fff !important; /* Change icon color */
+}
+.dark .custom-dashboard-title,
+.dark h3,
+.dark h2,
+.dark .custom-card-content p {
+    color: white; /* Change text color */
+}
+.dark .custom-card{
+	background-color: #31363F !important;
+	
+	
+}
+
+
 #content nav::before {
 	content: '';
 	position: absolute;
