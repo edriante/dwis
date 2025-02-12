@@ -122,5 +122,6 @@
 	    <script src="../assets/js/manageusers.js"></script>
         <script src="<?= base_url('assets/js/logout.js'); ?>"></script>
         <script src="<?= base_url('assets/js/search.js'); ?>"></script>
+        <script src="<?= base_url('assets/js/dark.js'); ?>"></script>
     </body>
 </html>
