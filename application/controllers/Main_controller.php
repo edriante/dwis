@@ -17,24 +17,23 @@ class Main_controller extends CI_Controller {
     
         // Get new users registered today
         $data['usersToday'] = $this->Main_model->countUsersToday();
-         // Get total services
+
+        // Get total services
         $data['totalService'] = $this->Main_model->countTotalServices();
 
         // Get new services added in the last 7 days
         $data['recentServices'] = $this->Main_model->countRecentServices();
 
-         // Get all services
-         $data['totalServices'] = $this->Main_model-> getServices();
+        // Get all services
+        $data['totalServices'] = $this->Main_model->getServices();
     
         // Fetch activity logs
         $data['activity_logs'] = $this->Activity_model->get_activity_logs();
-    
+
         $this->load->view('user_interface/main_view', $data);
     }
-    
-    
-    
 
+    // Manage Users
     public function manageUsers() {
         $data['title'] = 'Manage Users';
         $data['users'] = $this->Main_model->getUsers();
@@ -54,6 +53,7 @@ class Main_controller extends CI_Controller {
         }
     }
 
+    // Manage Categories
     public function addCategory() {
         $data['title'] = 'Add Category';
         $this->load->view('user_interface/addcategory', $data);
@@ -64,20 +64,36 @@ class Main_controller extends CI_Controller {
         $data['categories'] = $this->Main_model->getCategory();
         $this->load->view('user_interface/category', $data);
     }
+
+    // Manage Services
     public function manageServices() {
         $data['title'] = 'Manage Services';
         $data['services'] = $this->Main_model->getServices();
         $this->load->view('user_interface/manageservices', $data);
     }
+
     public function addServices() {
         $data['title'] = 'Add Services';
         $this->load->view('user_interface/addservices', $data);
     }
+
     public function addService() {
         $data = $this->input->post();
         if ($this->Main_model->addService($data)) {
             redirect('main_controller/manageServices');
         }
     }
+
+    // Get Chart Data
+    public function get_chart_data() {
+        $data = $this->Main_model->get_services_count();
+        echo json_encode($data);
+    }
+
+    public function get_users_data() {
+        $weeklyUsers = $this->Main_model->get_weekly_users();
+        echo json_encode($weeklyUsers);
+    }
+    
 }
 ?>

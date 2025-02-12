@@ -129,11 +129,11 @@
 
             <div class="chart-container d-flex justify-content-between">
                 <div class="chart-box">
-                    <h3>Chart</h3>
+                    <h3>Services</h3>
                     <canvas id="myChart"></canvas>
                 </div>
                 <div class="chart-box">
-                    <h3>Graph</h3>
+                    <h3>Users</h3>
                     <canvas id="mySecondChart"></canvas>
                 </div>
             </div>
@@ -145,5 +145,7 @@
     <script src="<?= base_url('assets/js/manageusers.js'); ?>"></script>
     <script src="<?= base_url('assets/js/dashboard.js'); ?>"></script>
     <script src="<?= base_url('assets/js/logout.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/dark.js'); ?>"></script>
+
 </body>
 </html>
