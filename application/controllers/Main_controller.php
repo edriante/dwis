@@ -41,13 +41,6 @@ class Main_controller extends CI_Controller {
         $this->load->view('user_interface/manageusers', $data);
     }
 
-    public function addUser() {
-        $data = $this->input->post();
-        if ($this->Main_model->addUser($data)) {
-            redirect('main_controller/manageUsers');
-        }
-    }
-
     public function updateUser($id) {
         $data = $this->input->post();
         if ($this->Main_model->updateUser($id, $data)) {
@@ -75,6 +68,16 @@ class Main_controller extends CI_Controller {
         $data['title'] = 'Manage Services';
         $data['services'] = $this->Main_model->getServices();
         $this->load->view('user_interface/manageservices', $data);
+    }
+    public function addServices() {
+        $data['title'] = 'Add Services';
+        $this->load->view('user_interface/addservices', $data);
+    }
+    public function addService() {
+        $data = $this->input->post();
+        if ($this->Main_model->addService($data)) {
+            redirect('main_controller/manageServices');
+        }
     }
 }
 ?>

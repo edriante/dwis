@@ -79,21 +79,39 @@
         <main>
             <h2 class="custom-dashboard-title">Add New Service</h2>
             <div class="container mt-4">
-                <form action="<?= site_url('admin/addService'); ?>" method="post">
+                <form action="<?= site_url('Main_controller/addService'); ?>" method="post">
                     <div class="mb-3">
                         <label for="serviceName" class="form-label">Service Name:</label>
-                        <input type="text" class="form-control" id="serviceName" name="service_name" required>
+                        <input type="text" class="form-control" id="serviceName" name="name" required>
                     </div>
-
                     <div class="mb-3">
                         <label for="serviceDescription" class="form-label">Description:</label>
                         <textarea class="form-control" id="serviceDescription" name="description" required></textarea>
                     </div>
+                    <div class="mb-3">
+                        <label for="serviceDescription" class="form-label">Price:</label>
+                        <textarea class="form-control" id="servicePrice" name="price" required></textarea>
+                    </div>
 
                     <div class="mb-3">
-                        <label for="servicePrice" class="form-label">Price:</label>
-                        <input type="number" class="form-control" id="servicePrice" name="price" step="0.01" required>
-                    </div>
+    <label for="serviceStatus" class="form-label">Status:</label>
+    <select class="form-control" id="serviceStatus" name="status" required>
+        <option value="">Select Status</option>
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="serviceCategory" class="form-label">Category:</label>
+    <select class="form-control" id="serviceCategory" name="category" required>
+        <option value="">Select Category</option>
+        <option value="Web Development">Web Development</option>
+        <option value="Graphic Design">Graphic Design</option>
+        <option value="SEO">SEO</option>
+        <option value="Marketing">Marketing</option>
+    </select>
+</div>
 
                     <button type="submit" class="btn btn-primary">Add Service</button>
                 </form>

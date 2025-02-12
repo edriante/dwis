@@ -18,9 +18,9 @@ class Main_model extends CI_Model {
         return $this->db->get_where('users', ['id' => $id])->row_array();
     }
 
-    // Add a new user
-    public function addUser($data) {
-        return $this->db->insert('users', $data);
+    // Add a services
+    public function addService($data) {
+        return $this->db->insert('services', $data);
     }
 
     // Update user
