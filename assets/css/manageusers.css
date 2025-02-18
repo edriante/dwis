@@ -47,52 +47,6 @@ body {
 }
 
 /* SIDEBAR */
-.dark .bi-list {
-    color: white; 
-}
-/* Dark mode styles */
-.dark .custom-card-icon {
-    background-color: #333 !important; /* Darker background for icons */
-}
-
-.dark .custom-card-icon i {
-    color: #fff !important; /* Change icon color */
-}
-.dark .custom-dashboard-title,
-.dark h3,
-.dark h2,
-.dark .form-label,
-.dark .custom-card-content p {
-    color: white; /* Change text color */
-}
-.dark .custom-card,
-.dark .form-control,
-.dark button,
-.dark #userSearch
-.dark .btn{
-	background-color: #31363F !important;		
-}
-.dark .btn, 
-.dark #userSearch {
-	background-color: #31363F !important;
-	border: 1px solid #CFE8FF;
-}
-.dark tbody {
-    background-color: #2C2F33; /* Darker background for tbody */
-    color: #FFFFFF; /* White text color for better contrast */
-}
-.dark tbody tr {
-    border-bottom: 1px solid #444; /* Darker border for rows */
-}
-
-.dark tbody tr:hover {
-    background-color: #3A3D42; /* Slightly lighter background on hover */
-}
-
-.dark tbody td {
-    padding: 10px; /* Add padding to cells */
-    text-align: left; /* Align text to the left */
-}
 #sidebar {
 	position: fixed;
 	top: 0;
