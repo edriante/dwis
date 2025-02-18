@@ -98,6 +98,18 @@ class Main_controller extends CI_Controller {
         }
     }
 
+    public function delete_service($id = null) {
+        if ($id === null) {
+            show_error('Missing User ID', 400);
+        }
+        
+        if ($this->Main_model->delete_service($id)) {
+            redirect('main_controller/manageServices');
+        } else {
+            show_error('Failed to delete service.', 500);
+        }
+    }
+
     public function edit_user($id) {
         $data['user'] = $this->Main_model->get_user_by_id($id);
         $this->load->view('admin/edit_user', $data);
