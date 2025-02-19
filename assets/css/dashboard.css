@@ -40,27 +40,3 @@ canvas {
     height: 60vh !important; 
 }
 
-/* Dark mode styles */
-body.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
-}
-
-body.dark-mode .custom-card {
-    background-color: #1e1e1e;
-    color: #ffffff;
-}
-
-body.dark-mode .table {
-    background-color: #1e1e1e;
-    color: #ffffff;
-}
-
-body.dark-mode .table th {
-    background-color: #333333;
-    color: #ffffff;
-}
-
-body.dark-mode .table-striped tbody tr:nth-of-type(odd) {
-    background-color: #2a2a2a;
-}

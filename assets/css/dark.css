@@ -1,0 +1,94 @@
+/* Dark mode styles from dashboard.css*/
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .table,
+body.dark-mode .custom-card {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-mode .table th {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+body.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #2a2a2a;
+}
+
+
+
+/* Dark mode styles from manageusers.css*/
+body.dark {
+	--light: #0C0C1E;
+	--grey: #060714;
+	--dark: #FBFBFB;
+}
+
+/* NAVBAR ngem adda suna idjay style.css
+.dark .bi-list {
+    color: white; 
+}
+*/
+
+
+/* Dark mode styles from style.css*/
+.dark .bi-list {
+    color: white; 
+}
+/* Dark mode styles */
+.dark .custom-card-icon {
+    background-color: #333 !important; /* Darker background for icons */
+}
+
+.dark .custom-card-icon i {
+    color: #fff !important; /* Change icon color */
+}
+.dark .custom-dashboard-title,
+.dark h3,
+.dark h2,
+.dark button,
+.dark #userSearch::placeholder,
+.dark #serviceSearch::placeholder,
+.dark .custom-card-content p,
+#serviceStatus option,
+#serviceCategory option,
+#serviceStatus,
+#serviceCategory,
+.dark .form-label {
+    color: white; /* Change text color */
+}
+.dark .custom-card,
+.dark .form-control,
+.dark button,
+.dark #userSearch,
+.dark .btn {
+	background-color: #31363F !important;
+}
+
+.dark .btn, 
+.dark #serviceSearch,
+.dark #userSearch {
+	background-color: #31363F !important;
+	border: 1px solid #CFE8FF;
+}
+
+.dark tbody {
+    background-color: #2C2F33; /* Darker background for tbody */
+    color: #FFFFFF; /* White text color for better contrast */
+}
+.dark tbody tr {
+    border-bottom: 1px solid #444; /* Darker border for rows */
+}
+
+.dark tbody tr:hover {
+    background-color: #3A3D42; /* Slightly lighter background on hover */
+}
+
+.dark tbody td {
+    padding: 10px; /* Add padding to cells */
+    text-align: left; /* Align text to the left */
+}

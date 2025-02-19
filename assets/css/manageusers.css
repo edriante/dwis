@@ -35,11 +35,7 @@ html {
 	overflow-x: hidden;
 }
 
-body.dark {
-	--light: #0C0C1E;
-	--grey: #060714;
-	--dark: #FBFBFB;
-}
+
 
 body {
 	background: var(--grey);
@@ -182,10 +178,7 @@ body {
 	left: 60px;
 }
 
-/* NAVBAR */
-.dark .bi-list {
-    color: white; 
-}
+
 #content nav {
 	height: 56px;
 	background: var(--light);
