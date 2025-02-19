@@ -27,6 +27,9 @@ class Main_controller extends CI_Controller {
         // Get all services
         $data['totalServices'] = $this->Main_model->getServices();
     
+        // Calculate total price of services
+        $data['totalPrice'] = array_sum(array_column($data['totalServices'], 'price'));
+
         // Fetch activity logs
         $data['activity_logs'] = $this->Activity_model->get_activity_logs();
 
@@ -40,27 +43,26 @@ class Main_controller extends CI_Controller {
         $this->load->view('user_interface/manageusers', $data);
     }
 
-    public function updateUser($id = null) {
+    public function updateUser ($id = null) {
         if ($id === null) {
             show_error('Missing User ID', 400);
         }
         
         $data = $this->input->post();
         
-        if ($this->Main_model->updateUser($id, $data)) {
+        if ($this->Main_model->updateUser ($id, $data)) {
             redirect('Main_controller/manageUsers');
         } else {
             show_error('Failed to update user.', 500);
         }
     }
     
-
-    public function deleteUser($id = null) {
+    public function deleteUser ($id = null) {
         if ($id === null) {
             show_error('Missing User ID', 400);
         }
         
-        if ($this->Main_model->deleteUser($id)) {
+        if ($this->Main_model->deleteUser ($id)) {
             redirect('main_controller/manageUsers');
         } else {
             show_error('Failed to delete user.', 500);
@@ -131,7 +133,6 @@ class Main_controller extends CI_Controller {
         $this->load->view('admin/edit_service', $data);
     }    
     
-    
     public function update_service($id = null) {
         if (!$id) {
             show_error('Service ID is missing.', 500);
@@ -152,8 +153,6 @@ class Main_controller extends CI_Controller {
         }
     }
     
-    
-
     // Get Chart Data
     public function get_chart_data() {
         $data = $this->Main_model->get_services_count();
@@ -164,6 +163,5 @@ class Main_controller extends CI_Controller {
         $weeklyUsers = $this->Main_model->get_weekly_users();
         echo json_encode($weeklyUsers);
     }
-    
 }
 ?>

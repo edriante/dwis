@@ -107,10 +107,14 @@
     <label for="serviceCategory" class="form-label">Category:</label>
     <select class="form-control" id="serviceCategory" name="category" required>
         <option value="">Select Category</option>
-        <option value="Web Development">Web Development</option>
-        <option value="Graphic Design">Graphic Design</option>
-        <option value="SEO">SEO</option>
+        <option value="Consulting">Consulting</option>
+        <option value="Design">Design</option>
+        <option value="IT Services">IT Services</option>
         <option value="Marketing">Marketing</option>
+        <option value="Multimedia">Multimedia</option>
+        <option value="Photography">Photography</option>
+        <option value="Web Development">Web Development</option>                         
+        <option value="Writing">Writing</option>
     </select>
 </div>
 

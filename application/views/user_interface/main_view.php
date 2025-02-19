@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/dashboard.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/dark.css'); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <title>Admin</title>
 </head>
@@ -79,18 +78,18 @@
         <main>
             <h2 class="custom-dashboard-title">Dashboard</h2>
             <div class="custom-dashboard-cards">
-    <div class="custom-card">
-        <div class="custom-card-body">
-            <div class="custom-card-icon bg-purple"><i class="bi bi-people"></i></div>
-            <div class="custom-card-content">
-                <h5>Users</h5>
-                <h2><?php echo number_format($totalUsers); ?></h2>
-                <p class="text-<?php echo ($usersToday > 0) ? 'success' : 'danger'; ?>">
-    <?php echo ($usersToday > 0) ? '+' . $usersToday . ' users today' : '0 users today'; ?>
-                </p>
-            </div>
-        </div>
-    </div>
+                <div class="custom-card">
+                    <div class="custom-card-body">
+                        <div class="custom-card-icon bg-purple"><i class="bi bi-people"></i></div>
+                        <div class="custom-card-content">
+                            <h5>Users</h5>
+                            <h2><?php echo number_format($totalUsers); ?></h2>
+                            <p class="text-<?php echo ($usersToday > 0) ? 'success' : 'danger'; ?>">
+                                <?php echo ($usersToday > 0) ? '+' . $usersToday . ' users today' : '0 users today'; ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 <div class="custom-card">
                     <div class="custom-card-body">
                         <div class="custom-card-icon bg-red"><i class="bi bi-gear"></i></div>
@@ -98,20 +97,19 @@
                             <h5>Services</h5>
                             <h2><?php echo number_format($totalService); ?></h2>
                             <p class="text-<?php echo ($recentServices > 0) ? 'success' : 'danger'; ?>">
-                              <?php echo ($recentServices > 0) ? '+' . $recentServices . ' services added this week' : '0 services added this week'; ?>
+                                <?php echo ($recentServices > 0) ? '+' . $recentServices . ' services added this week' : '0 services added this week'; ?>
                             </p>
-
                         </div>
                     </div>
                 </div>
 
                 <div class="custom-card">
                     <div class="custom-card-body">
-                        <div class="custom-card-icon bg-green"><i class="bi bi-person-check"></i></div>
+                        <div class="custom-card-icon bg-green"><i class="bi bi-cash"></i></div>
                         <div class="custom-card-content">
-                            <h5>Card 3</h5>
-                            <h2>desc</h2>
-                            <p class="text-danger">""</p>
+                            <h5>Profit</h5>
+                            <h2>₱<?php echo number_format($totalPrice, 2); ?></h2>
+                            <p class="text-success">Total price of all services</p>
                         </div>
                     </div>
                 </div>

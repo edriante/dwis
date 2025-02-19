@@ -54,10 +54,10 @@ body.dark {
 .dark #userSearch::placeholder,
 .dark #serviceSearch::placeholder,
 .dark .custom-card-content p,
-#serviceStatus option,
-#serviceCategory option,
-#serviceStatus,
-#serviceCategory,
+.dark #serviceStatus option,
+.dark #serviceCategory option,
+.dark #serviceStatus,
+.dark #serviceCategory,
 .dark .form-label {
     color: white; /* Change text color */
 }
