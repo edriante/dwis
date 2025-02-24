@@ -10,41 +10,32 @@ allSideMenu.forEach(item => {
 		li.classList.add('active');
 	});
 });
-
 // TOGGLE SIDEBAR
-const menuBar = document.querySelector('#content nav .bi.bi-list');
+const menuBar = document.querySelector('#content nav .bi-list'); // Ensure correct selector
 const sidebar = document.getElementById('sidebar');
 
-menuBar.addEventListener('click', function () {
-	sidebar.classList.toggle('hide');
-});
+// Ensure elements exist before adding event listeners
+if (menuBar && sidebar) {
+    menuBar.addEventListener('click', function () {
+        sidebar.classList.toggle('hide');
+    });
 
-const searchButton = document.querySelector('#content nav form .form-input button');
-const searchButtonIcon = document.querySelector('#content nav form .form-input button .bi');
-const searchForm = document.querySelector('#content nav form');
+    // Initial width check for hiding elements
+    function handleResize() {
+        if (window.innerWidth <= 576) {
+            sidebar.classList.add('hide');
+            menuBar.classList.add('hide');
+        } else {
+            sidebar.classList.remove('hide');
+            menuBar.classList.remove('hide'); // Show menu bar on wider screens
+        }
+    }
 
-searchButton.addEventListener('click', function (e) {
-	if (window.innerWidth < 576) {
-		e.preventDefault();
-		searchForm.classList.toggle('show');
-		if (searchForm.classList.contains('show')) {
-			searchButtonIcon.classList.replace('bi-search', 'bi-x'); // Updated icon class
-		} else {
-			searchButtonIcon.classList.replace('bi-x', 'bi-search'); // Updated icon class
-		}
-	}
-});
+    // Run on page load
+    handleResize();
 
-if (window.innerWidth < 768) {
-	sidebar.classList.add('hide');
-} else if (window.innerWidth > 576) {
-	searchButtonIcon.classList.replace('bi-x', 'bi-search'); // Updated icon class
-	searchForm.classList.remove('show');
+    // Handle window resize event
+    window.addEventListener('resize', handleResize);
 }
 
-window.addEventListener('resize', function () {
-	if (this.innerWidth > 576) {
-		searchButtonIcon.classList.replace('bi-x', 'bi-search'); // Updated icon class
-		searchForm.classList.remove('show');
-	}
-});
+

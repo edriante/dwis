@@ -141,10 +141,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="<?= base_url('assets/js/manageusers.js'); ?>"></script>
     <script src="<?= base_url('assets/js/dashboard.js'); ?>"></script>
     <script src="<?= base_url('assets/js/logout.js'); ?>"></script>
     <script src="<?= base_url('assets/js/dark.js'); ?>"></script>
-
+    <script src="<?= base_url('assets/js/script.js'); ?>"></script>
 </body>
 </html>

@@ -119,7 +119,7 @@
 </div>
 <div class="mb-3">
     <label for="serviceCategory" class="form-label">Parent Category:</label>
-    <select class="form-control" id="serviceCategory" name="category" required>
+    <select class="form-control" id="serviceCategories" name="category" required>
         <option value="">Set Parent Category</option>
         <option value="0">0</option>
         <option value="1">1</option>
@@ -135,9 +135,10 @@
     </section>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/script.js"></script>
     <script src="<?= base_url('assets/js/logout.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/search.js'); ?>"></script>
     <script src="<?= base_url('assets/js/dark.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/script.js'); ?>"></script>
  
 </body>
 </html>
