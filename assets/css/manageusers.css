@@ -307,17 +307,16 @@ main {
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
-    background: transparent; /* No bold white container */
+    background: transparent;
 }
 
-/* Title */
 main h2 {
     float: left;
     font-size: 22px;
-    color: #333; /* Neutral dark gray */
+    color: #333; 
 }
 
-/* Search bar */
+
 .search-container {
     float: right;
 	gap: 8px;
@@ -349,15 +348,13 @@ main h2 {
 .search-container button:hover {
     background: #ccc;
 }
-
-
-/* Table styles */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 50px;
-    background: transparent;
+    min-width: 600px; 
+    
 }
+
 
 th, td {
     padding: 10px;
@@ -389,22 +386,22 @@ td img {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;  /* Small and aesthetic */
+    width: 32px;  
     height: 32px;
-    border-radius: 8px;  /* Soft rounded corners */
+    border-radius: 8px;  
     text-decoration: none;
     font-size: 16px;
     transition: all 0.3s ease;
 }
 
 .action-icons .edit {
-    background-color: rgba(0, 123, 255, 0.1); /* Soft blue background */
+    background-color: rgba(0, 123, 255, 0.1); 
     color: #007bff;
     border: 1px solid rgba(0, 123, 255, 0.2);
 }
 
 .action-icons .delete {
-    background-color: rgba(220, 53, 69, 0.1); /* Soft red background */
+    background-color: rgba(220, 53, 69, 0.1); 
     color: #dc3545;
     border: 1px solid rgba(220, 53, 69, 0.2);
 }
@@ -417,25 +414,6 @@ td img {
 .action-icons .delete:hover {
     background-color: rgba(220, 53, 69, 0.2);
     color: #a71d2a;
-}
-
-
-/* Responsive design */
-@media (max-width: 600px) {
-    main h2, .search-container {
-        float: none;
-        text-align: center;
-        display: block;
-        margin-bottom: 10px;
-    }
-
-    table {
-        font-size: 14px;
-    }
-
-    .action-icons {
-        justify-content: center;
-    }
 }
 
 .bg-purple {
@@ -461,75 +439,44 @@ td img {
 .text-danger {
 	color: #dc3545;
 }
+@media (max-width: 600px) {
+	.search-container {
+        display: none;
+    }
 
+   
+    main {
+        overflow-x: auto;
+        white-space: nowrap;
+        margin-top: 60px;
+    }
 
-@media screen and (max-width: 768px) {
-	#sidebar {
-		width: 200px;
-	}
+    table {
+        min-width: 600px; 
+    }
 
-	#content {
-		width: calc(100% - 60px);
-		left: 200px;
-	}
+   
+    main h2 {
+        font-size: 20px;
+    }
 
-	#content nav .nav-link {
-		display: none;
-	}
-}
-#content nav .bi {
-	cursor: pointer;
-  }
-  
-  #content nav .bi:hover {
-	color: #007bff; /* Change to your desired hover color */
-  }
+    th, td {
+        font-size: 16px;
+        padding: 12px;
+    }
 
+    td {
+        font-weight: 700;
+    }
 
+   
+    td img {
+        width: 45px;
+        height: 45px;
+    }
 
-
-
-@media screen and (max-width: 576px) {
-	#content nav form .form-input input {
-		display: none;
-	}
-
-	#content nav form .form-input button {
-		width: auto;
-		height: auto;
-		background: transparent;
-		border-radius: none;
-		color: var(--dark);
-	}
-
-	#content nav form.show .form-input input {
-		display: block;
-		width: 100%;
-	}
-	#content nav form.show .form-input button {
-		width: 36px;
-		height: 100%;
-		border-radius: 0 36px 36px 0;
-		color: var(--light);
-		background: var(--red);
-	}
-
-	#content nav form.show ~ .notification,
-	#content nav form.show ~ .profile {
-		display: none;
-	}
-
-	#content main .box-info {
-		grid-template-columns: 1fr;
-	}
-
-	#content main .table-data .head {
-		min-width: 420px;
-	}
-	#content main .table-data .order table {
-		min-width: 420px;
-	}
-	#content main .table-data .todo .todo-list {
-		min-width: 420px;
-	}
+   
+    .action-icons {
+        justify-content: center;
+    }
 }
