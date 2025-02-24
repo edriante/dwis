@@ -39,4 +39,20 @@ canvas {
     width: 100% !important; 
     height: 60vh !important; 
 }
+/* Responsive Styles for Smaller Screens */
+@media (max-width: 576px) {
+    .chart-container {
+        flex-direction: column; /* Stacks charts vertically */
+        align-items: center;
+    }
 
+    .chart-title {
+        font-size: 16px; /* Slightly smaller font for better fit */
+        font-weight: bold; /* Lighten boldness for balance */
+    }
+
+    .chart-box {
+        width: 100%; /* Takes full width */
+        max-width: 90%; /* Prevents charts from being too wide */
+    }
+}

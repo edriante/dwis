@@ -126,7 +126,7 @@
                 </div>
             </div>
 
-            <div class="chart-container d-flex justify-content-between">
+            <div class="chart-containerd-flex flex-column flex-md-row justify-content-between">
                 <div class="chart-box">
                     <h3>Services</h3>
                     <canvas id="myChart"></canvas>

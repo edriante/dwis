@@ -5,7 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error(`Canvas with ID '${canvasId}' not found.`);
             return;
         }
+        
         const ctx = canvas.getContext('2d');
+
+        // Determine font sizes based on screen width
+        const isSmallScreen = window.innerWidth <= 768;
+        const fontSize = isSmallScreen ? 14 : 18; // Bigger font for readability
+        const fontWeight = isSmallScreen ? '600' : '700'; // Thicker font for clarity
 
         return new Chart(ctx, {
             type: type,
@@ -27,14 +33,32 @@ document.addEventListener("DOMContentLoaded", function () {
                         beginAtZero: true,
                         ticks: {
                             stepSize: 1,
-                            precision: 0
+                            precision: 0,
+                            font: {
+                                size: fontSize,
+                                weight: fontWeight
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: fontSize,
+                                weight: fontWeight
+                            }
                         }
                     }
                 },
                 plugins: {
                     legend: {
                         display: true,
-                        position: 'top'
+                        position: isSmallScreen ? 'bottom' : 'top', // Adjust legend placement for small screens
+                        labels: {
+                            font: {
+                                size: fontSize,
+                                weight: fontWeight
+                            }
+                        }
                     }
                 }
             }
