@@ -49,7 +49,12 @@
     </nav>
 
     <main>
-        <h2 class="custom-dashboard-title">Edit User</h2>
+        <div class="edit-user-header">
+            <h2 class="custom-dashboard-title">Edit User</h2>
+            <a href="<?= site_url('Main_controller/manageUsers'); ?>" class="exit-button">
+                <i class="bi bi-x-circle"></i>
+            </a>
+        </div>
         <div class="container mt-4">
         <form action="<?= site_url('Main_controller/updateUser/' . $user['id']); ?>" method="post">
                 <input type="hidden" name="id" value="<?= htmlspecialchars($user['id'], ENT_QUOTES, 'UTF-8'); ?>">

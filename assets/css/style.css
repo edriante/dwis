@@ -451,3 +451,65 @@ body {
 		min-width: 420px;
 	}
 }
+
+/* Responsive form styles */
+@media (max-width: 768px) {
+    .container {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    .form-control {
+        width: 100%; /* Ensures input fields take full width */
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .btn {
+        width: 50%; /* Makes buttons full-width for better accessibility */
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+/* Adjust form layout for very small screens */
+@media (max-width: 480px) {
+    .mb-3 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .form-control {
+        font-size: 14px;
+    }
+}
+
+
+/* Edit User header container */
+.edit-user-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+}
+
+/* Exit button styling */
+.exit-button {
+    font-size: 28px;
+    color: red;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.exit-button:hover {
+    color: darkred;
+}

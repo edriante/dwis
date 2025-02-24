@@ -74,7 +74,12 @@
         </nav>
 
         <main>
-            <h2 class="custom-dashboard-title">Edit Service</h2>
+            <div class="edit-user-header">
+                <h2 class="custom-dashboard-title">Edit Service</h2>
+                <a href="<?= site_url('Main_controller/manageServices'); ?>" class="exit-button">
+                    <i class="bi bi-x-circle"></i>
+                </a>
+            </div>
             <div class="container mt-4">
                 <form action="<?= site_url('Main_controller/update_service/' . $service['id']); ?>" method="post">
                     <input type="hidden" name="id" value="<?= $service['id']; ?>">
