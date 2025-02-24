@@ -46,7 +46,7 @@
     </a>
 </li>
 <li class="active">
-    <a href="<?= site_url('Main_controller/manage  Categories'); ?>">
+    <a href="<?= site_url('Main_controller/manageCategories'); ?>">
         <i class="bi bi-tag"></i>
         <span class="text">Categories</span>
     </a>
@@ -90,34 +90,39 @@
 		<button>Search</button>
     </div>
     <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Image</th>
-                <th>Category Name</th>
-                <th>Service Name</th>
-                <th>Parent Category</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($categories as $category): ?>
-            <tr>
-                <td><?= $category['id']; ?></td>
-                <td><img src="<?= $category['img']; ?>" alt="Profile"></td>
-                <td><?= $category['username']; ?></td>
-                <td><?= $category['email']; ?></td>
-                <td><?= $category ['role']; ?></td>
-                <td>
-                    <div class="action-icons">
-                        <a href="#" class="edit"><i class="fa-solid fa-pen"></i></a>
-                        <a href="#" class="delete"><i class="fa-solid fa-trash"></i></a>
-                    </div>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Category Name</th>
+            <th>Service Name</th>
+            <th>Parent Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($categories as $category): ?>
+        <tr>
+            <td><?= $category['id']; ?></td>
+            <td><?= $category['category']; ?></td>
+            <td><?= $category['name']; ?></td>
+            <td><?= $category['parent_category']; ?></td>
+            <td>
+            <div class="action-icons">
+                                        <a href="" class="edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <a href="" 
+                                           class="delete" 
+                                           onclick="return confirm('Are you sure you want to delete this service?');">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </div>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
 </main>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

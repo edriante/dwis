@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Chart 1 - Services Bar Chart
-    fetch('get_chart_data')
+    fetch('Main_controller/get_chart_data')
         .then(response => response.json())
         .then(data => {
             const labels = data.map(item => item.category);

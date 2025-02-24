@@ -50,9 +50,11 @@ class Main_model extends CI_Model {
         return $this->db->get('services')->result_array();
     }
 
-    // Fetch all categories
-    public function getCategory() {
-        return $this->db->get('categories')->result_array();
+   // Fetch all categories
+    public function getCategories() {
+    $this->db->select('id, category, name, parent_category');
+    $query = $this->db->get('services');
+    return $query->result_array(); 
     }
 
     // Add a new category

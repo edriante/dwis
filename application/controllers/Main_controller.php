@@ -69,17 +69,13 @@ class Main_controller extends CI_Controller {
         }
     }
 
-    // Manage Categories
-    public function addCategory() {
-        $data['title'] = 'Add Category';
-        $this->load->view('user_interface/addcategory', $data);
-    }
-
+     
     public function manageCategories() {
         $data['title'] = 'Manage Categories';
-        $data['categories'] = $this->Main_model->getCategory();
+        $data['categories'] = $this->Main_model->getCategories(); // Correct function name
         $this->load->view('user_interface/category', $data);
     }
+    
 
     // Manage Services
     public function manageServices() {

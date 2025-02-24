@@ -117,6 +117,16 @@
         <option value="Writing">Writing</option>
     </select>
 </div>
+<div class="mb-3">
+    <label for="serviceCategory" class="form-label">Parent Category:</label>
+    <select class="form-control" id="serviceCategory" name="category" required>
+        <option value="">Set Parent Category</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+</div>
 
                     <button type="submit" class="btn btn-primary">Add Service</button>
                 </form>
