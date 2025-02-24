@@ -52,7 +52,7 @@
 		</ul>
 		<ul class="side-menu">
             <li>
-                <a id="logoutBtn" class="logout">
+                <a id="logoutBtn" class="logout" data-logout-url="<?= base_url('Auth/logout'); ?>">
                     <i class="bi bi-box-arrow-right"></i>
                     <span class="text">Logout</span>
                 </a>

@@ -26,7 +26,12 @@
         <li><a href="<?= site_url('Main_controller/manageCategories'); ?>"><i class="bi bi-tag"></i> <span class="text">Categories</span></a></li>
     </ul>
     <ul class="side-menu">
-        <li><a id="logoutBtn" class="logout"><i class="bi bi-box-arrow-right"></i> <span class="text">Logout</span></a></li>
+        <li>
+            <a id="logoutBtn" class="logout" data-logout-url="<?= base_url('Auth/logout'); ?>">
+                <i class="bi bi-box-arrow-right"></i>
+                <span class="text">Logout</span>
+            </a>
+        </li>
     </ul>
 </section>
 
