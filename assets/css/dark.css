@@ -51,13 +51,16 @@ body.dark {
 .dark h3,
 .dark h2,
 .dark button,
+.dark #userSearch,
 .dark #userSearch::placeholder,
+.dark #serviceSearch,
 .dark #serviceSearch::placeholder,
 .dark .custom-card-content p,
 .dark #serviceStatus option,
 .dark #serviceCategory option,
 .dark #serviceStatus,
 .dark #serviceCategory,
+.dark .form-control,
 .dark .form-label {
     color: white; /* Change text color */
 }

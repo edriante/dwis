@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="<?= base_url('assets/img/download (2).png'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/dark.css'); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
@@ -33,6 +34,7 @@
 <section id="content">
     <nav>
         <i class="bi bi-list"></i>
+        <form action="#"></form>
         <input type="checkbox" id="switch-mode" hidden>
         <label for="switch-mode" class="switch-mode"></label>
         <a href="#" class="notification"></a>
@@ -86,6 +88,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="<?= base_url('assets/js/script.js'); ?>"></script>
 <script src="<?= base_url('assets/js/logout.js'); ?>"></script>
+<script src="<?= base_url('assets/js/dark.js'); ?>"></script>
 
 </body>
 </html>
