@@ -74,8 +74,7 @@ class Main_controller extends CI_Controller {
         $data['title'] = 'Manage Categories';
         $data['categories'] = $this->Main_model->getCategories(); // Correct function name
         $this->load->view('user_interface/category', $data);
-    }
-    
+    }    
 
     // Manage Services
     public function manageServices() {
@@ -125,7 +124,7 @@ class Main_controller extends CI_Controller {
             show_404(); // Show 404 if service doesn't exist
         }
     
-        $data['categories'] = $this->Main_model->get_categories(); // Fetch categories
+        $data['services'] = $this->Main_model->get_categories(); // Fetch categories
         $this->load->view('admin/edit_service', $data);
     }    
     
@@ -139,7 +138,8 @@ class Main_controller extends CI_Controller {
             'description' => $this->input->post('description'),
             'price' => $this->input->post('price'),
             'status' => $this->input->post('status'),
-            'category' => $this->input->post('category')
+            'category' => $this->input->post('category'),
+            'parent_category' => $this->input->post('parent_category')
         );
     
         if ($this->Main_model->update_service($id, $data)) {

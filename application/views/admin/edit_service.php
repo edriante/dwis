@@ -98,7 +98,7 @@
                     </div>
                     <div class="mb-3">
                       <label for="serviceCategory" class="form-label">Parent Category:</label>
-                          <select class="form-control" id="serviceCategory" name="category" required>
+                          <select class="form-control" id="serviceCategory" name="parent_category"  required>
                              <option value="">Set Parent Category</option>
                              <option value="0">0</option>
                              <option value="1">1</option>

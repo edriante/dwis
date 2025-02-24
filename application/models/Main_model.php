@@ -111,10 +111,9 @@ class Main_model extends CI_Model {
     }
     
     
-
     public function get_categories() {
-        $query = $this->db->get('categories'); // Fetch all categories from the database
-        return $query->result_array(); // Return the result as an array
+        $query = $this->db->get('services'); 
+        return $query->result_array(); 
     }
     
     
