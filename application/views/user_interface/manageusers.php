@@ -4,11 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" href="../assets/img/download (2).png">
-	<link rel="stylesheet" href="../assets/css/manageusers.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
+	<link rel="stylesheet" href="<?= base_url('assets/css/manageusers.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/dark.css'); ?>">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
-
+    <link rel="icon" href= "<?= base_url('assets/img/download (2).png'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
 	<title>Admin</title>
 </head>
 <body>
@@ -50,14 +50,14 @@
                 </a>
             </li>
 		</ul>
-		<ul class="side-menu">
+        <ul class="side-menu">
             <li>
                 <a id="logoutBtn" class="logout" data-logout-url="<?= base_url('Auth/logout'); ?>">
-                    <i class="bi bi-box-arrow-right"></i>
-                    <span class="text">Logout</span>
+                <i class="bi bi-box-arrow-right"></i>
+                <span class="text">Logout</span>
                 </a>
             </li>
-		</ul>
+        </ul>
 	</section>
 	
 	<!-- CONTENT -->
@@ -76,10 +76,10 @@
 
 		<!-- Table -->
 		<main>
-            <h2>Manage Users</h2>
-            <div class="search-container">
-                <input type="text" placeholder="Search users..." id="userSearch">
-		        <button>Search</button>
+        <h2 class="custom-dashboard-title">Manage Users</h2>
+            <div class="search-container mb-3">
+                <input type="text" placeholder="Search Users..." id="userSearch" class="form-control" style="width: 300px; display: inline-block;">
+                <button class="btn btn-primary">Search</button>
             </div>
             <table id="userTable">
                 <thead>

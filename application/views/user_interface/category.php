@@ -4,11 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" href="../assets/img/download (2).png">
-	<link rel="stylesheet" href="../assets/css/manageusers.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" href= "<?= base_url('assets/img/download (2).png'); ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/css/manageusers.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/dark.css'); ?>">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
 	<title>Admin</title>
 </head>
 <body>
@@ -63,34 +63,26 @@
 	</section>
 	
 
-
 	<!-- CONTENT -->
-	<section id="content">
-		<!-- NAVBAR -->
-		<nav>
-			<i class="bi bi-list"></i>
-			
-			<form action="#">
-				
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				
-			</a>
-			<a href="#" class="profile">
-				<img src="../assets/img/logo.png" alt="Profile">
-			</a>
-		</nav>
-		<!--Table-->
-		<main>
-    <h2>Category</h2>
-    <div class="search-container">
-        <input type="text" placeholder="Search category..." id="userSearch">
-		<button>Search</button>
-    </div>
-    <table>
-    <thead>
+    <section id="content">
+        <nav>
+            <i class="bi bi-list"></i>
+            <form action="#"></form>
+            <input type="checkbox" id="switch-mode" hidden>
+            <label for="switch-mode" class="switch-mode"></label>
+            <a href="#" class="notification"></a>
+            <a href="#" class="profile">
+                <img src="../assets/img/logo.png" alt="Profile">
+            </a>
+        </nav>
+		 <main>
+            <h2 class="custom-dashboard-title">Categories</h2>
+            <div class="search-container mb-3">
+                <input type="text" placeholder="Search Category..." id="categorySearch" class="form-control" style="width: 300px; display: inline-block;">
+                <button class="btn btn-primary">Search</button>
+            </div>
+            <table id="categoryTable">
+          <thead>
         <tr>
             <th>ID</th>
             <th>Category Name</th>
@@ -100,30 +92,36 @@
         </tr>
     </thead>
     <tbody>
+ <?php if (!empty($categories)): ?>
         <?php foreach ($categories as $category): ?>
         <tr>
             <td><?= $category['id']; ?></td>
             <td><?= $category['category']; ?></td>
             <td><?= $category['name']; ?></td>
             <td><?= $category['parent_category']; ?></td>
-            <td>
-            <div class="action-icons">
-                                        <a href="" class="edit">
+                               <td>
+                                    <div class="action-icons">
+                                        <a href="<?= base_url('Main_controller/edit_service/' . $category['id']); ?>" class="edit">
                                             <i class="bi bi-pencil"></i>
                                         </a>
-                                        <a href="" 
+                                        <a href="<?= site_url('Main_controller/delete_service/' . $category['id']); ?>" 
                                            class="delete" 
                                            onclick="return confirm('Are you sure you want to delete this service?');">
                                             <i class="bi bi-trash"></i>
                                         </a>
                                     </div>
-            </td>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
-
-</main>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="7" class="text-center">No Results</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </main>
+    </section>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

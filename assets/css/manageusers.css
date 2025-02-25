@@ -440,10 +440,7 @@ td img {
 	color: #dc3545;
 }
 @media (max-width: 600px) {
-	.search-container {
-        display: none;
-    }
-
+	
    
     main {
         overflow-x: auto;
