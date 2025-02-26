@@ -6,7 +6,6 @@ class Main_controller extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Main_model');
-        $this->load->model('Activity_model');
     }
 
     public function index() {
@@ -29,9 +28,6 @@ class Main_controller extends CI_Controller {
     
         // Calculate total price of services
         $data['totalPrice'] = array_sum(array_column($data['totalServices'], 'price'));
-
-        // Fetch activity logs
-        $data['activity_logs'] = $this->Activity_model->get_activity_logs();
 
         $this->load->view('user_interface/main_view', $data);
     }
