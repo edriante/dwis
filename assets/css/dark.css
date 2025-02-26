@@ -51,6 +51,7 @@ body.dark {
 .dark h3,
 .dark h2,
 .dark button,
+.dark .btn,
 .dark #userSearch,
 .dark #userSearch::placeholder,
 .dark #serviceSearch,
@@ -60,6 +61,7 @@ body.dark {
 .dark #serviceCategory option,
 .dark #serviceStatus,
 .dark #serviceCategory,
+.dark #categorySearch::placeholder,
 .dark .form-control,
 .dark .form-label {
     color: white; /* Change text color */
