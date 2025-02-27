@@ -19,7 +19,7 @@ class Services extends REST_Controller {
 
     // GET a single service by ID
     public function show_get($id) {
-        $service = $this->db->get_where('services', ['service_id' => $id])->row();
+        $service = $this->db->get_where('services', ['id' => $id])->row();
         if ($service) {
             $this->response($service, REST_Controller::HTTP_OK);
         } else {
@@ -40,7 +40,7 @@ class Services extends REST_Controller {
     // PUT: Update a service
     public function update_put($id) {
         $data = $this->put();
-        $this->db->where('service_id', $id);
+        $this->db->where('id', $id);
         if ($this->db->update('services', $data)) {
             $this->response(['message' => 'Service updated'], REST_Controller::HTTP_OK);
         } else {
@@ -50,7 +50,7 @@ class Services extends REST_Controller {
 
     // DELETE: Remove a service
     public function delete_delete($id) {
-        $this->db->where('service_id', $id);
+        $this->db->where('id', $id);
         if ($this->db->delete('services')) {
             $this->response(['message' => 'Service deleted'], REST_Controller::HTTP_OK);
         } else {

@@ -151,5 +151,9 @@ class Main_model extends CI_Model {
     public function addUser($data) {
         return $this->db->insert('users', $data);
     }
+   // Add a new admin
+    public function add_admin($data) {
+    return $this->db->insert('admin', $data);
+    }
 }
 ?>
