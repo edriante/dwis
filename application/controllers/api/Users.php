@@ -19,7 +19,7 @@ class Users extends REST_Controller {
 
     // GET a single user by ID
     public function show_get($id) {
-        $user = $this->db->get_where('users', ['user_id' => $id])->row();
+        $user = $this->db->get_where('users', ['id' => $id])->row();
         if ($user) {
             $this->response($user, REST_Controller::HTTP_OK);
         } else {
@@ -27,20 +27,24 @@ class Users extends REST_Controller {
         }
     }
 
-    // POST: Create a new user
-    public function store_post() {
+    public function users_post() {
         $data = $this->post();
-        if ($this->db->insert('users', $data)) {
-            $this->response(['message' => 'User created'], REST_Controller::HTTP_CREATED);
+
+        if (empty($data)) {
+            $this->response(['message' => 'No data provided'], REST_Controller::HTTP_BAD_REQUEST);
+        }
+
+        if ($this->Main_model->addUser($data)) {
+            $this->response(['message' => 'User created successfully'], REST_Controller::HTTP_CREATED);
         } else {
-            $this->response(['message' => 'Failed to create user'], REST_Controller::HTTP_BAD_REQUEST);
+            $this->response(['message' => 'Failed to create user'], REST_Controller::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
     // PUT: Update a user
     public function update_put($id) {
         $data = $this->put();
-        $this->db->where('user_id', $id);
+        $this->db->where('id', $id);
         if ($this->db->update('users', $data)) {
             $this->response(['message' => 'User updated'], REST_Controller::HTTP_OK);
         } else {
@@ -50,7 +54,7 @@ class Users extends REST_Controller {
 
     // DELETE: Remove a user
     public function delete_delete($id) {
-        $this->db->where('user_id', $id);
+        $this->db->where('id', $id);
         if ($this->db->delete('users')) {
             $this->response(['message' => 'User deleted'], REST_Controller::HTTP_OK);
         } else {
