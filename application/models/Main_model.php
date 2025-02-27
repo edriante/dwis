@@ -116,10 +116,6 @@ class Main_model extends CI_Model {
         return $query->result_array(); 
     }
     
-     // ✅ Insert New User
-     public function addUser($data) {
-        return $this->db->insert('users', $data);
-    }
     // Get service names and their count (for chart)
     public function get_services_count() {
         $this->db->select('category, COUNT(*) as count');
@@ -152,7 +148,8 @@ class Main_model extends CI_Model {
     
         return $days;
     }
-    
-    
+    public function addUser($data) {
+        return $this->db->insert('users', $data);
+    }
 }
 ?>

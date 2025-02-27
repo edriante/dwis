@@ -6,9 +6,10 @@ use Restserver\Libraries\REST_Controller;
 use Restserver\Libraries\Format;
 
 class Users extends REST_Controller {
+
     public function __construct() {
         parent::__construct();
-        $this->load->database();
+        $this->load->model('Main_model'); 
     }
 
     // GET all users
@@ -27,11 +28,13 @@ class Users extends REST_Controller {
         }
     }
 
-    public function users_post() {
+    // POST: Create a new user 
+    public function index_post() {
         $data = $this->post();
 
         if (empty($data)) {
             $this->response(['message' => 'No data provided'], REST_Controller::HTTP_BAD_REQUEST);
+            return;
         }
 
         if ($this->Main_model->addUser($data)) {
@@ -41,8 +44,8 @@ class Users extends REST_Controller {
         }
     }
 
-    // PUT: Update a user
-    public function update_put($id) {
+     // PUT: Update a user
+     public function update_put($id) {
         $data = $this->put();
         $this->db->where('id', $id);
         if ($this->db->update('users', $data)) {
@@ -51,14 +54,13 @@ class Users extends REST_Controller {
             $this->response(['message' => 'Failed to update user'], REST_Controller::HTTP_BAD_REQUEST);
         }
     }
-
-    // DELETE: Remove a user
-    public function delete_delete($id) {
-        $this->db->where('id', $id);
-        if ($this->db->delete('users')) {
-            $this->response(['message' => 'User deleted'], REST_Controller::HTTP_OK);
-        } else {
-            $this->response(['message' => 'Failed to delete user'], REST_Controller::HTTP_BAD_REQUEST);
-        }
+// DELETE: Remove a user
+public function delete_delete($id) {
+    $this->db->where('id', $id);
+    if ($this->db->delete('users')) {
+        $this->response(['message' => 'User deleted'], REST_Controller::HTTP_OK);
+    } else {
+        $this->response(['message' => 'Failed to delete user'], REST_Controller::HTTP_BAD_REQUEST);
     }
+}
 }

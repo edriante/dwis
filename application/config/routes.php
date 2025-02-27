@@ -30,11 +30,17 @@ $route['api/services']['POST'] = 'api/services/store';
 $route['api/services/(:num)']['PUT'] = 'api/services/update/$1';
 $route['api/services/(:num)']['DELETE'] = 'api/services/delete/$1';
 
-$route['api/users']['GET'] = 'api/users/index';
+
+$route['users']['get'] = 'users/index_get';
+$route['users']['post'] = 'users/index_post';
 $route['api/users/(:num)']['GET'] = 'api/users/show/$1';
-$route['api/users']['POST'] = 'api/users/store';
 $route['api/users/(:num)']['PUT'] = 'api/users/update/$1';
 $route['api/users/(:num)']['DELETE'] = 'api/users/delete/$1';
 
-$route['api/index']['GET'] = 'api/index/index'; 
+
+
+
+
+
+
 
