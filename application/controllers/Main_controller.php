@@ -68,7 +68,7 @@ class Main_controller extends CI_Controller {
      
     public function manageCategories() {
         $data['title'] = 'Manage Categories';
-        $data['categories'] = $this->Main_model->getCategories(); // Correct function name
+        $data['categories'] = $this->Main_model->getCategories(); 
         $this->load->view('user_interface/category', $data);
     }    
 
@@ -85,9 +85,35 @@ class Main_controller extends CI_Controller {
     }
 
     public function addService() {
-        $data = $this->input->post();
-        if ($this->Main_model->addService($data)) {
-            redirect('main_controller/manageServices');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 10048; 
+        $config['encrypt_name'] = TRUE;
+    
+        $this->load->library('upload', $config);
+    
+        if (!$this->upload->do_upload('img')) {
+            $error = array('error' => $this->upload->display_errors());
+            show_error($error, 500);
+        } else {
+            $uploadData = $this->upload->data();
+            $fileName = $uploadData['file_name'];
+    
+            $data = array(
+                'name' => $this->input->post('name'),
+                'description' => $this->input->post('description'),
+                'price' => $this->input->post('price'),
+                'status' => $this->input->post('status'),
+                'category_id' => $this->input->post('category_id'),
+                'parent_category' => $this->input->post('category'),
+                'img' => $fileName
+            );
+    
+            if ($this->Main_model->addService($data)) {
+                redirect('main_controller/manageServices');
+            } else {
+                show_error('Failed to add service.', 500);
+            }
         }
     }
 
@@ -117,10 +143,10 @@ class Main_controller extends CI_Controller {
         $data['service'] = $this->Main_model->get_service_by_id($id);
     
         if (!$data['service']) {
-            show_404(); // Show 404 if service doesn't exist
+            show_404(); 
         }
     
-        $data['services'] = $this->Main_model->get_categories(); // Fetch categories
+        $data['services'] = $this->Main_model->get_categories(); 
         $this->load->view('admin/edit_service', $data);
     }    
     
@@ -134,7 +160,7 @@ class Main_controller extends CI_Controller {
             'description' => $this->input->post('description'),
             'price' => $this->input->post('price'),
             'status' => $this->input->post('status'),
-            'category' => $this->input->post('category'),
+            'category_id' => $this->input->post('category_id'),
             'parent_category' => $this->input->post('parent_category')
         );
     

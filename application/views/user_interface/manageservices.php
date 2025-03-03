@@ -86,7 +86,7 @@
                         <th>Service Name</th>
                         <th>Description</th>
                         <th>Price</th>
-                        <th>Category</th>
+                        <th>Image</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
@@ -99,7 +99,10 @@
                                 <td><?= $service['name']; ?></td>   
                                 <td><?= $service['description']; ?></td>
                                 <td><?= $service['price']; ?></td>
-                                <td><?= $service['category']; ?></td>
+                                <td>
+    <img src="<?= base_url('uploads/' . $service['img']); ?>" alt="Service Image">
+</td>
+
                                 <td><?= $service['status']; ?></td>
                                 <td>
                                     <div class="action-icons">

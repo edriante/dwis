@@ -81,56 +81,48 @@
         <main>
             <h2 class="custom-dashboard-title">Add New Service</h2>
             <div class="container mt-4">
-                <form action="<?= site_url('Main_controller/addService'); ?>" method="post">
-                    <div class="mb-3">
-                        <label for="serviceName" class="form-label">Service Name:</label>
-                        <input type="text" class="form-control" id="serviceName" name="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="serviceDescription" class="form-label">Description:</label>
-                        <textarea class="form-control" id="serviceDescription" name="description" required></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="serviceDescription" class="form-label">Price:</label>
-                        <textarea class="form-control" id="servicePrice" name="price" required></textarea>
-                    </div>
+            <form action="<?= site_url('Main_controller/addService'); ?>" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="serviceName" class="form-label">Service Name:</label>
+        <input type="text" class="form-control" id="serviceName" name="name" required>
+    </div>
+    <div class="mb-3">
+        <label for="serviceDescription" class="form-label">Description:</label>
+        <textarea class="form-control" id="serviceDescription" name="description" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="servicePrice" class="form-label">Price:</label>
+        <textarea class="form-control" id="servicePrice" name="price" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="serviceImage" class="form-label">Image:</label>
+        <input type="file" class="form-control" id="serviceImage" name="img" required>
+    </div>
+    <div class="mb-3">
+        <label for="serviceStatus" class="form-label">Status:</label>
+        <select class="form-control" id="serviceStatus" name="status" required>
+            <option value="">Select Status</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="categoryId" class="form-label">Category Id:</label>
+        <input type="text" class="form-control" id="categoryId" name="category_id" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="serviceCategory" class="form-label">Parent Category:</label>
+        <select class="form-control" id="serviceCategories" name="category" required>
+            <option value="">Set Parent Category</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </div>
 
-                    <div class="mb-3">
-    <label for="serviceStatus" class="form-label">Status:</label>
-    <select class="form-control" id="serviceStatus" name="status" required>
-        <option value="">Select Status</option>
-        <option value="Active">Active</option>
-        <option value="Inactive">Inactive</option>
-    </select>
-</div>
-
-<div class="mb-3">
-    <label for="serviceCategory" class="form-label">Category:</label>
-    <select class="form-control" id="serviceCategory" name="category" required>
-        <option value="">Select Category</option>
-        <option value="Consulting">Consulting</option>
-        <option value="Design">Design</option>
-        <option value="IT Services">IT Services</option>
-        <option value="Marketing">Marketing</option>
-        <option value="Multimedia">Multimedia</option>
-        <option value="Photography">Photography</option>
-        <option value="Web Development">Web Development</option>                         
-        <option value="Writing">Writing</option>
-    </select>
-</div>
-<div class="mb-3">
-    <label for="serviceCategory" class="form-label">Parent Category:</label>
-    <select class="form-control" id="serviceCategories" name="category" required>
-        <option value="">Set Parent Category</option>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-    </select>
-</div>
-
-                    <button type="submit" class="btn btn-primary">Add Service</button>
-                </form>
+    <button type="submit" class="btn btn-primary">Add Service</button>
+</form>
             </div>
         </main>
     </section>
