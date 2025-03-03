@@ -82,43 +82,43 @@
                 <button class="btn btn-primary">Search</button>
             </div>
             <table id="categoryTable">
-          <thead>
-        <tr>
-            <th>ID</th>
-            <th>Category Name</th>
-            <th>Service Name</th>
-            <th>Parent Category</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
- <?php if (!empty($categories)): ?>
-        <?php foreach ($categories as $category): ?>
-        <tr>
-            <td><?= $category['id']; ?></td>
-            <td><?= $category['category']; ?></td>
-            <td><?= $category['name']; ?></td>
-            <td><?= $category['parent_category']; ?></td>
-                               <td>
-                                    <div class="action-icons">
-                                        <a href="<?= base_url('Main_controller/edit_service/' . $category['id']); ?>" class="edit">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <a href="<?= site_url('Main_controller/delete_service/' . $category['id']); ?>" 
-                                           class="delete" 
-                                           onclick="return confirm('Are you sure you want to delete this service?');">
-                                            <i class="bi bi-trash"></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr>
-                            <td colspan="7" class="text-center">No Results</td>
-                        </tr>
-                    <?php endif; ?>
-                </tbody>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Category Name</th>
+                    <th>Image</th>
+                    <th>Slug</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+        <tbody>
+            <?php if (!empty($categories)): ?>
+                <?php foreach ($categories as $category): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($category['cat_id'], ENT_QUOTES, 'UTF-8'); ?></td>
+                        <td><?= htmlspecialchars($category['cat_name'], ENT_QUOTES, 'UTF-8'); ?></td>
+                        <td><?= htmlspecialchars($category['img'], ENT_QUOTES, 'UTF-8'); ?></td>
+                        <td><?= htmlspecialchars($category['slug'], ENT_QUOTES, 'UTF-8'); ?></td>
+                        <td><?= htmlspecialchars($category['is_active'], ENT_QUOTES, 'UTF-8'); ?></td>
+                        <td>
+                            <div class="action-icons">
+                                <a href="<?= site_url('Main_controller/editCategory/' . $category['cat_id']); ?>" class="edit">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a href="<?= site_url('Main_controller/deleteCategory/' . $category['cat_id']); ?>" class="delete" onclick="return confirm('Are you sure you want to delete this category?');">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="6" class="text-center">No Results</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
             </table>
         </main>
     </section>
