@@ -12,7 +12,9 @@ class Main_model extends CI_Model {
     public function getUsers() {
         return $this->db->get('users')->result_array();
     }
-
+    public function getCategories() {
+        return $this->db->get('categories')->result_array();
+    }
     // Get user by ID
     public function getUserById($id) {
         return $this->db->get_where('users', ['id' => $id])->row_array();
@@ -21,6 +23,9 @@ class Main_model extends CI_Model {
     // Add a service
     public function addService($data) {
         return $this->db->insert('services', $data);
+    }
+    public function addCategories($data) {
+        return $this->db->insert('categories', $data);
     }
 
     // Update user
@@ -50,12 +55,7 @@ class Main_model extends CI_Model {
         return $this->db->get('services')->result_array();
     }
 
-   // Fetch all categories
-    public function getCategories() {
-    $this->db->select('id, category, name, parent_category');
-    $query = $this->db->get('services');
-    return $query->result_array(); 
-    }
+   
 
     // Add a new category
     public function addCategory($data) {

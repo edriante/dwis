@@ -38,7 +38,12 @@
         <span class="text">Add Services</span>
     </a>
 </li>
-
+<li>
+                <a href="<?= site_url('Main_controller/addCategories'); ?>">
+                    <i class="bi bi-plus-square"></i>
+                    <span class="text">Add Category</span>
+                </a>
+            </li>
 <li>
     <a href="<?= site_url('Main_controller/manageServices'); ?>">
         <i class="bi bi-tools"></i>
@@ -89,6 +94,7 @@
                     <th>Image</th>
                     <th>Slug</th>
                     <th>Status</th>
+                    <th>Parent ID</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -98,9 +104,12 @@
                     <tr>
                         <td><?= htmlspecialchars($category['cat_id'], ENT_QUOTES, 'UTF-8'); ?></td>
                         <td><?= htmlspecialchars($category['cat_name'], ENT_QUOTES, 'UTF-8'); ?></td>
-                        <td><?= htmlspecialchars($category['img'], ENT_QUOTES, 'UTF-8'); ?></td>
+                        <td>
+    <img src="<?= base_url('uploads/' . $category['img']); ?>" alt="Category Image">
+</td>
                         <td><?= htmlspecialchars($category['slug'], ENT_QUOTES, 'UTF-8'); ?></td>
                         <td><?= htmlspecialchars($category['is_active'], ENT_QUOTES, 'UTF-8'); ?></td>
+                        <td><?= htmlspecialchars($category['parent_category'], ENT_QUOTES, 'UTF-8'); ?></td>
                         <td>
                             <div class="action-icons">
                                 <a href="<?= site_url('Main_controller/editCategory/' . $category['cat_id']); ?>" class="edit">

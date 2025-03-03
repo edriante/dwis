@@ -31,10 +31,16 @@
                     <span class="text">Manage Users</span>
                 </a>
             </li>
-            <li class="active">
+            <li >
                 <a href="<?= site_url('Main_controller/addServices'); ?>">
                     <i class="bi bi-plus-square"></i>
                     <span class="text">Add Services</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="<?= site_url('Main_controller/addCategories'); ?>">
+                    <i class="bi bi-plus-square"></i>
+                    <span class="text">Add Category</span>
                 </a>
             </li>
             <li>
@@ -83,45 +89,26 @@
             <div class="container mt-4">
             <form action="<?= site_url('Main_controller/addCategory'); ?>" method="post" enctype="multipart/form-data">
     <div class="mb-3">
-        <label for="serviceName" class="form-label">Service Name:</label>
-        <input type="text" class="form-control" id="serviceName" name="name" required>
+        <label for="catName" class="form-label">Category Name:</label>
+        <input type="text" class="form-control" id="catName" name="cat_name" required>
     </div>
     <div class="mb-3">
-        <label for="serviceDescription" class="form-label">Description:</label>
-        <textarea class="form-control" id="serviceDescription" name="description" required></textarea>
+        <label for="slug" class="form-label">Slug:</label>
+        <input type="text" class="form-control" id="slug" name="slug" required>
     </div>
     <div class="mb-3">
-        <label for="servicePrice" class="form-label">Price:</label>
-        <textarea class="form-control" id="servicePrice" name="price" required></textarea>
+        <label for="catImage" class="form-label">Image:</label>
+        <input type="file" class="form-control" id="catImage" name="img" required>
     </div>
     <div class="mb-3">
-        <label for="serviceImage" class="form-label">Image:</label>
-        <input type="file" class="form-control" id="serviceImage" name="img" required>
+        <label for="is_active" class="form-label">Status:</label>
+        <input type="text" class="form-control" id="is_active" name="is_active" >
     </div>
     <div class="mb-3">
-        <label for="serviceStatus" class="form-label">Status:</label>
-        <select class="form-control" id="serviceStatus" name="status" required>
-            <option value="">Select Status</option>
-            <option value="Active">Active</option>
-            <option value="Inactive">Inactive</option>
-        </select>
+        <label for="parent_category" class="form-label">Parent ID:</label>
+        <input type="text" class="form-control" id="parent_category" name="parent_category" >
     </div>
-    <div class="mb-3">
-        <label for="categoryId" class="form-label">Category Id:</label>
-        <input type="text" class="form-control" id="categoryId" name="category_id" required></textarea>
-    </div>
-    <div class="mb-3">
-        <label for="serviceCategory" class="form-label">Parent Category:</label>
-        <select class="form-control" id="serviceCategories" name="category" required>
-            <option value="">Set Parent Category</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Add Service</button>
+    <button type="submit" class="btn btn-primary">Add Category</button>
 </form>
             </div>
         </main>

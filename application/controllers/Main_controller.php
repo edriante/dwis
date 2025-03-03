@@ -67,11 +67,10 @@ class Main_controller extends CI_Controller {
 
      
     public function manageCategories() {
-        $data['title'] = 'Manage Categories';
-        $data['categories'] = $this->Main_model->getCategories(); 
+        $data['title'] = 'Manage Category';
+        $data['categories'] = $this->Main_model->getCategories();
         $this->load->view('user_interface/category', $data);
-    }    
-
+    }
     // Manage Services
     public function manageServices() {
         $data['title'] = 'Manage Services';
@@ -83,7 +82,40 @@ class Main_controller extends CI_Controller {
         $data['title'] = 'Add Services';
         $this->load->view('user_interface/addservices', $data);
     }
-
+    public function addCategories() {
+        $data['title'] = 'Add Categories';
+        $this->load->view('user_interface/add_category', $data);
+    }
+    public function addCategory() {
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 10048; 
+        $config['encrypt_name'] = TRUE;
+    
+        $this->load->library('upload', $config);
+    
+        if (!$this->upload->do_upload('img')) {
+            $error = array('error' => $this->upload->display_errors());
+            show_error($error, 500);
+        } else {
+            $uploadData = $this->upload->data();
+            $fileName = $uploadData['file_name'];
+    
+            $data = array(
+                'cat_name' => $this->input->post('cat_name'),
+                'slug' => $this->input->post('slug'),
+                'is_active' => $this->input->post('is_active'),
+                'parent_category' => $this->input->post('parent_category'),
+                'img' => $fileName
+            );
+    
+            if ($this->Main_model->addCategories($data)) {
+                redirect('main_controller/manageCategories');
+            } else {
+                show_error('Failed to add category.', 500);
+            }
+        }
+    }
     public function addService() {
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'gif|jpg|png';
