@@ -37,6 +37,11 @@ $route['api/users/(:num)']['GET'] = 'api/users/show/$1';
 $route['api/users/(:num)']['PUT'] = 'api/users/update/$1';
 $route['api/users/(:num)']['DELETE'] = 'api/users/delete/$1';
 
+$route['categories']['get'] = 'categories/index_get';
+$route['categories']['post'] = 'categories/index_post';
+$route['api/categories/(:num)']['GET'] = 'api/categories/show/$1';
+$route['api/categories/(:num)']['PUT'] = 'api/categories/update/$1';
+$route['api/categories/(:num)']['DELETE'] = 'api/categories/delete/$1';
 
 
 
