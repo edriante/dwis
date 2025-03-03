@@ -9,6 +9,7 @@ class Services extends REST_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->database();
+        $this->load->library('upload');
     }
 
     // GET all services
@@ -27,11 +28,38 @@ class Services extends REST_Controller {
         }
     }
 
-    // POST: Create a new service
     public function store_post() {
-        $data = $this->post();
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 10048; 
+        $config['encrypt_name'] = TRUE;
+
+        $this->upload->initialize($config);
+
+        if (!$this->upload->do_upload('img')) {
+            $error = $this->upload->display_errors();
+            $this->response(['message' => 'Image upload failed', 'error' => $error], REST_Controller::HTTP_BAD_REQUEST);
+            return;
+        }
+
+        // Image upload successful, get file name
+        $uploadData = $this->upload->data();
+        $fileName = $uploadData['file_name'];
+
+        // Collect form data
+        $data = array(
+            'name' => $this->post('name'),
+            'description' => $this->post('description'),
+            'price' => $this->post('price'),
+            'status' => $this->post('status'),
+            'category_id' => $this->post('category_id'),
+            'parent_category' => $this->post('parent_category'),
+            'img' => $fileName // Store the file name in DB
+        );
+
+        // Insert into database
         if ($this->db->insert('services', $data)) {
-            $this->response(['message' => 'Service created'], REST_Controller::HTTP_CREATED);
+            $this->response(['message' => 'Service created successfully'], REST_Controller::HTTP_CREATED);
         } else {
             $this->response(['message' => 'Failed to create service'], REST_Controller::HTTP_BAD_REQUEST);
         }
