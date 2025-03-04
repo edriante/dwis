@@ -13,14 +13,14 @@ class Categories extends REST_Controller {
 
     // GET all categories from the services table
     public function index_get() {
-        $this->db->select('cat_id, cat_name, img, slug, is_active');
+        $this->db->select('cat_id, cat_name, img, slug, is_active, parent_category');
         $services = $this->db->get('categories')->result();
         $this->response($services, REST_Controller::HTTP_OK);
     }
 
     // GET a single category by ID from the services table
     public function show_get($id) {
-        $this->db->select('cat_id, cat_name, img, slug, is_active');
+        $this->db->select('cat_id, cat_name, img, slug, is_active, parent_category');
         $service = $this->db->get_where('categories', ['cat_id' => $id])->row();
         if ($service) {
             $this->response($service, REST_Controller::HTTP_OK);

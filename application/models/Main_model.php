@@ -12,9 +12,7 @@ class Main_model extends CI_Model {
     public function getUsers() {
         return $this->db->get('users')->result_array();
     }
-    public function getCategories() {
-        return $this->db->get('categories')->result_array();
-    }
+
     // Get user by ID
     public function getUserById($id) {
         return $this->db->get_where('users', ['id' => $id])->row_array();
@@ -55,19 +53,32 @@ class Main_model extends CI_Model {
         return $this->db->get('services')->result_array();
     }
 
-   
+    // Fetch all categories
+   public function getCategories() {
+    $this->db->select('cat_id, cat_name, img, slug, is_active, parent_category');
+    $query = $this->db->get('categories');
+    return $query->result_array(); 
+    }
+
+    public function getCategoryById($id) {
+        return $this->db->get_where('categories', ['cat_id' => $id])->row_array();
+    }
+    
+    public function updateCategory($id, $data) {
+        $this->db->where('cat_id', $id);
+        return $this->db->update('categories', $data);
+    }
 
     // Add a new category
     public function addCategory($data) {
         return $this->db->insert('categories', $data);
     }
 
-    // Update a category
-    public function updateCategory($id, $data) {
-        $this->db->where('id', $id);
-        return $this->db->update('categories', $data);
+    public function deleteCategory($id) {
+        $this->db->where('cat_id', $id);
+        return $this->db->delete('categories');
     }
-
+    
     // Count users registered today
     public function countUsersToday() {
         $this->db->where('DATE(created_at)', date('Y-m-d'));
@@ -108,12 +119,6 @@ class Main_model extends CI_Model {
     public function update_service($id, $data) {
         $this->db->where('id', $id);
         return $this->db->update('services', $data);
-    }
-    
-    
-    public function get_categories() {
-        $query = $this->db->get('services'); 
-        return $query->result_array(); 
     }
     
     // Get service names and their count (for chart)

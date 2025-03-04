@@ -67,10 +67,55 @@ class Main_controller extends CI_Controller {
 
      
     public function manageCategories() {
-        $data['title'] = 'Manage Category';
+        $data['title'] = 'Manage Categories';
         $data['categories'] = $this->Main_model->getCategories();
         $this->load->view('user_interface/category', $data);
     }
+
+    // Method to edit a category
+    public function editCategory($id) {
+        // Fetch category by ID
+        $data['category'] = $this->Main_model->getCategoryById($id); 
+        if (!$data['category']) {
+            show_404(); // Show 404 if category doesn't exist
+        }
+        $this->load->view('admin/edit_category', $data); // Load the edit category view
+    }
+
+    // Method to update a category
+    public function updateCategory($id = null) {
+        if ($id === null) {
+            show_error('Missing Category ID', 400);
+        }
+
+        // Get the posted data
+        $data = array(
+            'cat_name' => $this->input->post('cat_name'),
+            'img' => $this->input->post('img'),
+            'slug' => $this->input->post('slug'),
+            'is_active' => $this->input->post('is_active')
+        );
+
+        // Update the category in the database
+        if ($this->Main_model->updateCategory($id, $data)) {
+            redirect('Main_controller/manageCategories');
+        } else {
+            show_error('Failed to update category.', 500);
+        }
+    }
+
+    public function deleteCategory ($id = null) {
+        if ($id === null) {
+            show_error('Missing User ID', 400);
+        }
+        
+        if ($this->Main_model->deleteCategory ($id)) {
+            redirect('main_controller/manageCategories');
+        } else {
+            show_error('Failed to delete user.', 500);
+        }
+    }
+
     // Manage Services
     public function manageServices() {
         $data['title'] = 'Manage Services';
@@ -178,7 +223,7 @@ class Main_controller extends CI_Controller {
             show_404(); 
         }
     
-        $data['services'] = $this->Main_model->get_categories(); 
+        $data['services'] = $this->Main_model->getServices(); 
         $this->load->view('admin/edit_service', $data);
     }    
     

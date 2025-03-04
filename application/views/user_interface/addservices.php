@@ -31,10 +31,22 @@
                     <span class="text">Manage Users</span>
                 </a>
             </li>
+            <li>
+                <a href="<?= site_url('Main_controller/manageServices'); ?>">
+                    <i class="bi bi-tools"></i>
+                    <span class="text">Manage Services</span>
+                </a>
+            </li>
             <li class="active">
                 <a href="<?= site_url('Main_controller/addServices'); ?>">
                     <i class="bi bi-plus-square"></i>
                     <span class="text">Add Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="<?= site_url('Main_controller/manageCategories'); ?>">
+                    <i class="bi bi-tag"></i>
+                    <span class="text">Categories</span>
                 </a>
             </li>
             <li>
@@ -43,18 +55,7 @@
                     <span class="text">Add Category</span>
                 </a>
             </li>
-            <li>
-                <a href="<?= site_url('Main_controller/manageServices'); ?>">
-                    <i class="bi bi-tools"></i>
-                    <span class="text">Manage Services</span>
-                </a>
-            </li>
-            <li>
-    <a href="<?= site_url('Main_controller/manageCategories'); ?>">
-        <i class="bi bi-tag"></i>
-        <span class="text">Categories</span>
-    </a>
-</li>
+        </ul>
 
         </ul>
         <ul class="side-menu">

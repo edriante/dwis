@@ -15,47 +15,47 @@
 	<!-- SIDEBAR -->
 	<section id="sidebar">
     <a href="<?= site_url('Main_controller/index'); ?>" class="brand">
-			<img src="../assets/img/download (2).png" alt="A">
-			<span class="text">dmin</span>
-		</a>
-		<ul class="side-menu top">
-			<li>
-				<a href="<?= site_url('Main_controller/index'); ?>">
-					<i class="bi bi-house-door"></i>
-					<span class="text">Dashboard</span>
-				</a>
-			</li>
+		<img src="../assets/img/download (2).png" alt="A">
+		<span class="text">dmin</span>
+	</a>
+        <ul class="side-menu top">
             <li>
-    <a href="<?= site_url('Main_controller/manageUsers'); ?>">
-        <i class="bi bi-people"></i>
-        <span class="text">Manage Users</span>
-    </a>
-</li>
-
-<li>
-    <a href="<?= site_url('Main_controller/addServices'); ?>">
-        <i class="bi bi-plus-square"></i>
-        <span class="text">Add Services</span>
-    </a>
-</li>
-<li>
+                <a href="<?= site_url('Main_controller/index'); ?>">
+                    <i class="bi bi-house-door"></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="<?= site_url('Main_controller/manageUsers'); ?>">
+                    <i class="bi bi-people"></i>
+                    <span class="text">Manage Users</span>
+                </a>
+            </li>
+            <li>
+                <a href="<?= site_url('Main_controller/manageServices'); ?>">
+                    <i class="bi bi-tools"></i>
+                    <span class="text">Manage Services</span>
+                </a>
+            </li>
+            <li >
+                <a href="<?= site_url('Main_controller/addServices'); ?>">
+                    <i class="bi bi-plus-square"></i>
+                    <span class="text">Add Services</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="<?= site_url('Main_controller/manageCategories'); ?>">
+                    <i class="bi bi-tag"></i>
+                    <span class="text">Categories</span>
+                </a>
+            </li>
+            <li>
                 <a href="<?= site_url('Main_controller/addCategories'); ?>">
                     <i class="bi bi-plus-square"></i>
                     <span class="text">Add Category</span>
                 </a>
             </li>
-<li>
-    <a href="<?= site_url('Main_controller/manageServices'); ?>">
-        <i class="bi bi-tools"></i>
-        <span class="text">Manage Services</span>
-    </a>
-</li>
-<li class="active">
-    <a href="<?= site_url('Main_controller/manageCategories'); ?>">
-        <i class="bi bi-tag"></i>
-        <span class="text">Categories</span>
-    </a>
-</li>
+        </ul>
 		</ul>
 		<ul class="side-menu">
             <li>
@@ -104,9 +104,7 @@
                     <tr>
                         <td><?= htmlspecialchars($category['cat_id'], ENT_QUOTES, 'UTF-8'); ?></td>
                         <td><?= htmlspecialchars($category['cat_name'], ENT_QUOTES, 'UTF-8'); ?></td>
-                        <td>
-    <img src="<?= base_url('uploads/' . $category['img']); ?>" alt="Category Image">
-</td>
+                        <td><img src="<?= base_url('uploads/' . $category['img']); ?>" alt="Category Image"></td>
                         <td><?= htmlspecialchars($category['slug'], ENT_QUOTES, 'UTF-8'); ?></td>
                         <td><?= htmlspecialchars($category['is_active'], ENT_QUOTES, 'UTF-8'); ?></td>
                         <td><?= htmlspecialchars($category['parent_category'], ENT_QUOTES, 'UTF-8'); ?></td>
