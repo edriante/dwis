@@ -114,21 +114,24 @@
             <option value="Inactive">Inactive</option>
         </select>
     </div>
+   
     <div class="mb-3">
-        <label for="categoryId" class="form-label">Category Id:</label>
-        <input type="text" class="form-control" id="categoryId" name="category_id" required></textarea>
-    </div>
-    <div class="mb-3">
-        <label for="serviceCategory" class="form-label">Parent Category:</label>
-        <select class="form-control" id="serviceCategories" name="category" required>
-            <option value="">Set Parent Category</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
-    </div>
+    <label for="categoryId" class="form-label">Category:</label>
+    <?php if (!empty($categories)): ?>
+    <select class="form-control" id="categoryId" name="category_id" required>
+        <option value="">Select Category</option>
+        <?php foreach ($categories as $category): ?>
+            <option value="<?= htmlspecialchars($category['cat_id']); ?>">
+                <?= htmlspecialchars($category['cat_name']); ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+<?php else: ?>
+    <p>No categories available.</p>
+<?php endif; ?>
 
+    </div>
+    
     <button type="submit" class="btn btn-primary">Add Service</button>
 </form>
             </div>

@@ -3,11 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const serviceSearchInput = document.getElementById("serviceSearch");
     const userSearchInput = document.getElementById("userSearch");
     const categorySearchInput = document.getElementById("categorySearch");
-    // Select table rows for  services, category and users
     const serviceTableRows = document.querySelectorAll("#serviceTable tbody tr");
     const userTableRows = document.querySelectorAll("#userTable tbody tr");
     const categoryTableRows = document.querySelectorAll("#categoryTable tbody tr");
-    // Function to handle search functionality
+    
     function handleSearch(input, rows, columns) {
         input.addEventListener("keyup", function () {
             let filter = input.value.toLowerCase();
@@ -21,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 });
 
-                // Show or hide row based on whether it matches the search filter
+                
                 row.style.display = matches ? "" : "none";
             });
         });

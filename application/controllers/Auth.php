@@ -1,17 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require APPPATH . 'libraries/JwtAuth.php'; // Load JWT Library
+require APPPATH . 'libraries/JwtAuth.php'; 
 
 class Auth extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Admin_model');
-        $this->load->library('form_validation'); // Load session library
+        $this->load->library('form_validation'); 
         $this->jwt = new JwtAuth();
     }
 
-    // Web Admin Login (Session-Based)
+    
     public function login() {
         $this->load->view('auth/login');
     }
@@ -32,13 +32,13 @@ class Auth extends CI_Controller {
         }
     }
 
-        // Register user
+        
     public function register() {
         $this->load->view('auth/register');
     }
 
     public function register_process() {
-        // Form Validation
+        
         $this->form_validation->set_rules('username', 'Username', 'required|is_unique[admin.username]');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[admin.email]');
@@ -49,7 +49,7 @@ class Auth extends CI_Controller {
         } else {
             $password = $this->input->post('password');
 
-            // Ensure password is retrieved properly
+           
             if (empty($password)) {
                 $this->session->set_flashdata('error', 'Password is required.');
                 redirect('auth/register');
@@ -57,7 +57,7 @@ class Auth extends CI_Controller {
 
             $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
-            // Debugging: Check if password hashing works
+            
             if (!$password_hash) {
                 $this->session->set_flashdata('error', 'Password hashing failed.');
                 redirect('auth/register');
@@ -87,7 +87,7 @@ class Auth extends CI_Controller {
         redirect('auth/login');
     }
 
-    // Mobile Login (JWT-Based)
+    
     public function api_login() {
         header("Content-Type: application/json");
         $input = json_decode(trim(file_get_contents("php://input")), true);

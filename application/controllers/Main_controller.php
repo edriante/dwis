@@ -11,28 +11,26 @@ class Main_controller extends CI_Controller {
     public function index() {
         $data['title'] = 'Home Page';
     
-        // Get total users
         $data['totalUsers'] = $this->Main_model->countTotalUsers();
-    
-        // Get new users registered today
-        $data['usersToday'] = $this->Main_model->countUsersToday();
 
-        // Get total services
+        $data['usersToday'] = $this->Main_model->countUsersToday();
+ 
         $data['totalService'] = $this->Main_model->countTotalServices();
 
-        // Get new services added in the last 7 days
         $data['recentServices'] = $this->Main_model->countRecentServices();
 
-        // Get all services
         $data['totalServices'] = $this->Main_model->getServices();
-    
-        // Calculate total price of services
+
         $data['totalPrice'] = array_sum(array_column($data['totalServices'], 'price'));
+
+        $data['totalCategories'] = $this->Main_model->countTotalCategories();
+
+        $data['monthlyCategories'] = $this->Main_model->countMonthlyCategories();
 
         $this->load->view('user_interface/main_view', $data);
     }
 
-    // Manage Users
+    
     public function manageUsers() {
         $data['title'] = 'Manage Users';
         $data['users'] = $this->Main_model->getUsers();
@@ -72,23 +70,23 @@ class Main_controller extends CI_Controller {
         $this->load->view('user_interface/category', $data);
     }
 
-    // Method to edit a category
+    
     public function editCategory($id) {
-        // Fetch category by ID
+      
         $data['category'] = $this->Main_model->getCategoryById($id); 
         if (!$data['category']) {
-            show_404(); // Show 404 if category doesn't exist
+            show_404(); 
         }
-        $this->load->view('admin/edit_category', $data); // Load the edit category view
+        $this->load->view('admin/edit_category', $data); 
     }
 
-    // Method to update a category
+   
     public function updateCategory($id = null) {
         if ($id === null) {
             show_error('Missing Category ID', 400);
         }
 
-        // Get the posted data
+       
         $data = array(
             'cat_name' => $this->input->post('cat_name'),
             'img' => $this->input->post('img'),
@@ -96,7 +94,7 @@ class Main_controller extends CI_Controller {
             'is_active' => $this->input->post('is_active')
         );
 
-        // Update the category in the database
+       
         if ($this->Main_model->updateCategory($id, $data)) {
             redirect('Main_controller/manageCategories');
         } else {
@@ -116,7 +114,7 @@ class Main_controller extends CI_Controller {
         }
     }
 
-    // Manage Services
+   
     public function manageServices() {
         $data['title'] = 'Manage Services';
         $data['services'] = $this->Main_model->getServices();
@@ -125,6 +123,8 @@ class Main_controller extends CI_Controller {
 
     public function addServices() {
         $data['title'] = 'Add Services';
+        $data['categories'] = $this->Main_model->get_categories(); 
+    
         $this->load->view('user_interface/addservices', $data);
     }
     public function addCategories() {
@@ -163,12 +163,12 @@ class Main_controller extends CI_Controller {
     }
     public function addService() {
         $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = 'gif|jpg|png';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp|webp';
         $config['max_size'] = 10048; 
         $config['encrypt_name'] = TRUE;
     
         $this->load->library('upload', $config);
-    
+        
         if (!$this->upload->do_upload('img')) {
             $error = array('error' => $this->upload->display_errors());
             show_error($error, 500);
@@ -182,7 +182,6 @@ class Main_controller extends CI_Controller {
                 'price' => $this->input->post('price'),
                 'status' => $this->input->post('status'),
                 'category_id' => $this->input->post('category_id'),
-                'parent_category' => $this->input->post('category'),
                 'img' => $fileName
             );
     
@@ -237,8 +236,7 @@ class Main_controller extends CI_Controller {
             'description' => $this->input->post('description'),
             'price' => $this->input->post('price'),
             'status' => $this->input->post('status'),
-            'category_id' => $this->input->post('category_id'),
-            'parent_category' => $this->input->post('parent_category')
+            'category_id' => $this->input->post('category_id')   
         );
     
         if ($this->Main_model->update_service($id, $data)) {
@@ -248,7 +246,7 @@ class Main_controller extends CI_Controller {
         }
     }
     
-    // Get Chart Data
+    
     public function get_chart_data() {
         $data = $this->Main_model->get_services_count();
         echo json_encode($data);
@@ -258,5 +256,11 @@ class Main_controller extends CI_Controller {
         $weeklyUsers = $this->Main_model->get_weekly_users();
         echo json_encode($weeklyUsers);
     }
+    public function get_category_counts() {
+        $data['totalCategories'] = $this->Main_model->get_total_categories();
+        $data['monthlyCategories'] = $this->Main_model->get_monthly_categories();
+        return $data;
+    }
+    
 }
 ?>

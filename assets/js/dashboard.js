@@ -8,11 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
         
         const ctx = canvas.getContext('2d');
 
-        // Determine font sizes based on screen width
+        
         const isSmallScreen = window.innerWidth <= 768;
-        const fontSize = isSmallScreen ? 14 : 18; // Bigger font for readability
-        const fontWeight = isSmallScreen ? '600' : '700'; // Thicker font for clarity
-
+        const fontSize = isSmallScreen ? 14 : 18; 
+        const fontWeight = isSmallScreen ? '600' : '700'; 
         return new Chart(ctx, {
             type: type,
             data: {
@@ -52,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 plugins: {
                     legend: {
                         display: true,
-                        position: isSmallScreen ? 'bottom' : 'top', // Adjust legend placement for small screens
+                        position: isSmallScreen ? 'bottom' : 'top', 
                         labels: {
                             font: {
                                 size: fontSize,
@@ -65,20 +64,21 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Chart 1 - Services Bar Chart
-    fetch('get_chart_data')
-        .then(response => response.json())
-        .then(data => {
-            if (!Array.isArray(data)) {
-                throw new Error('Invalid data format for services chart');
-            }
-            const labels = data.map(item => item.category);
-            const counts = data.map(item => item.count);
-            createChart('myChart', 'bar', labels, 'Services', counts, 'rgba(75, 192, 192, 1)', 'rgba(75, 192, 192, 0.2)');
-        })
-        .catch(error => console.error('Error fetching services chart data:', error));
+  
+fetch('get_chart_data')
+.then(response => response.json())
+.then(data => {
+    if (!Array.isArray(data)) {
+        throw new Error('Invalid data format for services chart');
+    }
+    const labels = data.map(item => item.category_name);
+    const counts = data.map(item => item.service_count); 
+    createChart('myChart', 'bar', labels, 'Services', counts, 'rgba(75, 192, 192, 1)', 'rgba(75, 192, 192, 0.2)');
+})
+.catch(error => console.error('Error fetching services chart data:', error));
 
-    // Chart 2 - Weekly Users Line Chart
+
+    
     fetch('get_users_data')
         .then(response => response.json())
         .then(data => {
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error('Error fetching users chart data:', error));
 
-    // Ensuring charts resize properly
+   
     window.addEventListener('resize', function () {
         Object.values(Chart.instances).forEach(instance => {
             if (instance) {

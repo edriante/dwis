@@ -12,13 +12,13 @@ class Users extends REST_Controller {
         $this->load->model('Main_model'); 
     }
 
-    // GET all users
+   
     public function index_get() {
         $users = $this->db->get('users')->result();
         $this->response($users, REST_Controller::HTTP_OK);
     }
 
-    // GET a single user by ID
+    
     public function show_get($id) {
         $user = $this->db->get_where('users', ['id' => $id])->row();
         if ($user) {
@@ -28,7 +28,7 @@ class Users extends REST_Controller {
         }
     }
 
-    // POST: Create a new user 
+    
     public function index_post() {
         $data = $this->post();
 
@@ -44,7 +44,7 @@ class Users extends REST_Controller {
         }
     }
 
-     // PUT: Update a user
+     
      public function update_put($id) {
         $data = $this->put();
         $this->db->where('id', $id);
@@ -54,7 +54,7 @@ class Users extends REST_Controller {
             $this->response(['message' => 'Failed to update user'], REST_Controller::HTTP_BAD_REQUEST);
         }
     }
-// DELETE: Remove a user
+
 public function delete_delete($id) {
     $this->db->where('id', $id);
     if ($this->db->delete('users')) {

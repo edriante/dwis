@@ -112,7 +112,7 @@ class Main_model extends CI_Model {
     
     public function get_service_by_id($id) {
         $query = $this->db->get_where('services', ['id' => $id]);
-        return $query->row_array();  // Fetch the row as an array
+        return $query->row_array(); 
     }
     
     
@@ -120,16 +120,18 @@ class Main_model extends CI_Model {
         $this->db->where('id', $id);
         return $this->db->update('services', $data);
     }
-    
-    // Get service names and their count (for chart)
+       
     public function get_services_count() {
-        $this->db->select('category, COUNT(*) as count');
-        $this->db->group_by('category');
-        $query = $this->db->get('services'); 
+        $this->db->select('categories.cat_name as category_name, COUNT(services.id) as service_count');
+        $this->db->from('categories');
+        $this->db->join('services', 'categories.cat_id = services.category_id', 'left'); 
+        $this->db->group_by('categories.cat_id');
+        $query = $this->db->get();
         return $query->result();
     }
+    
+    
     public function get_weekly_users() {
-        // Initialize an array for all 7 days with 0 counts
         $days = [
             'Monday' => 0,
             'Tuesday' => 0,
@@ -160,5 +162,20 @@ class Main_model extends CI_Model {
     public function add_admin($data) {
     return $this->db->insert('admin', $data);
     }
+    public function get_categories() {
+        $query = $this->db->get('categories'); 
+        return $query->result_array(); 
+    }
+    public function countTotalCategories() {
+        return $this->db->count_all('categories'); 
+    }
+    public function countMonthlyCategories() {
+        $currentMonth = date('Y-m');
+        $this->db->where('YEAR(created_at)', date('Y'));
+        $this->db->where('MONTH(created_at)', date('m'));
+        return $this->db->count_all_results('categories');
+    }
+    
+
 }
 ?>

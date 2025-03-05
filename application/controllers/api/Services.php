@@ -12,13 +12,13 @@ class Services extends REST_Controller {
         $this->load->library('upload');
     }
 
-    // GET all services
+   
     public function index_get() {
         $services = $this->db->get('services')->result();
         $this->response($services, REST_Controller::HTTP_OK);
     }
 
-    // GET a single service by ID
+    
     public function show_get($id) {
         $service = $this->db->get_where('services', ['id' => $id])->row();
         if ($service) {
@@ -42,11 +42,10 @@ class Services extends REST_Controller {
             return;
         }
 
-        // Image upload successful, get file name
+        
         $uploadData = $this->upload->data();
         $fileName = $uploadData['file_name'];
 
-        // Collect form data
         $data = array(
             'name' => $this->post('name'),
             'description' => $this->post('description'),
@@ -54,10 +53,10 @@ class Services extends REST_Controller {
             'status' => $this->post('status'),
             'category_id' => $this->post('category_id'),
             'parent_category' => $this->post('parent_category'),
-            'img' => $fileName // Store the file name in DB
+            'img' => $fileName 
         );
 
-        // Insert into database
+       
         if ($this->db->insert('services', $data)) {
             $this->response(['message' => 'Service created successfully'], REST_Controller::HTTP_CREATED);
         } else {
@@ -65,7 +64,7 @@ class Services extends REST_Controller {
         }
     }
 
-    // PUT: Update a service
+    
     public function update_put($id) {
         $data = $this->put();
         $this->db->where('id', $id);
@@ -76,7 +75,7 @@ class Services extends REST_Controller {
         }
     }
 
-    // DELETE: Remove a service
+    
     public function delete_delete($id) {
         $this->db->where('id', $id);
         if ($this->db->delete('services')) {

@@ -121,16 +121,18 @@
                 </div>
 
                 <div class="custom-card">
-                    <div class="custom-card-body">
-                        <div class="custom-card-icon bg-blue"><i class="bi bi-cart-check"></i></div>
-                        <div class="custom-card-content">
-                            <h5>Card 4</h5>
-                            <h2>desc</h2>
-                            <p class="text-success">""</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="custom-card-body">
+        <div class="custom-card-icon bg-purple"><i class="bi bi-folder fill"></i></div>
+        <div class="custom-card-content">
+            <h5>Categories</h5>
+            <h2><?php echo number_format($totalCategories); ?></h2>
+            <p class="text-<?php echo ($monthlyCategories > 0) ? 'success' : 'danger'; ?>">
+                <?php echo ($monthlyCategories > 0) ? '+' . $monthlyCategories . ' new categories this month' : '0 new categories this month'; ?>
+            </p>
+        </div>
+    </div>
+</div>
+           </div>
 
             <div class="chart-containerd-flex flex-column flex-md-row justify-content-between">
                 <div class="chart-box">

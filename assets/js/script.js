@@ -10,31 +10,31 @@ allSideMenu.forEach(item => {
 		li.classList.add('active');
 	});
 });
-// TOGGLE SIDEBAR
-const menuBar = document.querySelector('#content nav .bi-list'); // Ensure correct selector
+
+const menuBar = document.querySelector('#content nav .bi-list'); 
 const sidebar = document.getElementById('sidebar');
 
-// Ensure elements exist before adding event listeners
+
 if (menuBar && sidebar) {
     menuBar.addEventListener('click', function () {
         sidebar.classList.toggle('hide');
     });
 
-    // Initial width check for hiding elements
+    
     function handleResize() {
         if (window.innerWidth <= 576) {
             sidebar.classList.add('hide');
             menuBar.classList.add('hide');
         } else {
             sidebar.classList.remove('hide');
-            menuBar.classList.remove('hide'); // Show menu bar on wider screens
+            menuBar.classList.remove('hide');
         }
     }
 
-    // Run on page load
+   
     handleResize();
 
-    // Handle window resize event
+    
     window.addEventListener('resize', handleResize);
 }
 

@@ -78,38 +78,6 @@
                             <option value="Inactive" <?= $service['status'] == 'Inactive' ? 'selected' : ''; ?>>Inactive</option>
                         </select>
                     </div>
-                    <div class="mb-3">
-                      <label for="serviceCategory" class="form-label">Parent Category:</label>
-                          <select class="form-control" id="serviceCategory" name="parent_category"  required>
-                             <option value="">Set Parent Category</option>
-                             <option value="0">0</option>
-                             <option value="1">1</option>
-                             <option value="2">2</option>
-                             <option value="3">3</option>
-                         </select>
-                   </div>
-
-                    <div class="mb-3">
-                        <label for="serviceCategory" class="form-label">Category:</label>
-                        <select class="form-control" id="serviceCategory" name="category" required>
-                            <option value="">Select Category</option>
-                            <option value="Consulting">Consulting</option>
-                            <option value="Design">Design</option>
-                            <option value="IT Services">IT Services</option>
-                            <option value="Marketing">Marketing</option>
-                            <option value="Multimedia">Multimedia</option>
-                            <option value="Photography">Photography</option>
-                            <option value="Web Development">Web Development</option>                         
-                            <option value="Writing">Writing</option>
-                            
-                            <?php foreach ($categories as $category): ?>
-                                <option value="<?= $category['name']; ?>" <?= ($service['category'] == $category['name']) ? 'selected' : ''; ?>>
-                                    <?= $category['name']; ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-
                     <button type="submit" class="btn btn-primary">Update Service</button>
                 </form>
             </div>
