@@ -80,28 +80,6 @@ class Main_controller extends CI_Controller {
         $this->load->view('admin/edit_category', $data); 
     }
 
-   
-    public function updateCategory($id = null) {
-        if ($id === null) {
-            show_error('Missing Category ID', 400);
-        }
-
-       
-        $data = array(
-            'cat_name' => $this->input->post('cat_name'),
-            'img' => $this->input->post('img'),
-            'slug' => $this->input->post('slug'),
-            'is_active' => $this->input->post('is_active')
-        );
-
-       
-        if ($this->Main_model->updateCategory($id, $data)) {
-            redirect('Main_controller/manageCategories');
-        } else {
-            show_error('Failed to update category.', 500);
-        }
-    }
-
     public function deleteCategory ($id = null) {
         if ($id === null) {
             show_error('Missing User ID', 400);
@@ -231,13 +209,32 @@ class Main_controller extends CI_Controller {
             show_error('Service ID is missing.', 500);
         }
     
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp|webp';
+        $config['max_size'] = 10048;
+        $config['encrypt_name'] = TRUE;
+    
+        $this->load->library('upload', $config);
+        
+        $fileName = null; 
+    
+        if ($this->upload->do_upload('img')) {
+            $uploadData = $this->upload->data();
+            $fileName = $uploadData['file_name'];
+        } 
+    
         $data = array(
             'name' => $this->input->post('name'),
             'description' => $this->input->post('description'),
             'price' => $this->input->post('price'),
             'status' => $this->input->post('status'),
-            'category_id' => $this->input->post('category_id')   
+            'category_id' => $this->input->post('category_id')
         );
+    
+       
+        if ($fileName) {
+            $data['img'] = $fileName;
+        }
     
         if ($this->Main_model->update_service($id, $data)) {
             redirect('Main_controller/manageServices');
@@ -245,7 +242,6 @@ class Main_controller extends CI_Controller {
             show_error('Failed to update service.', 500);
         }
     }
-    
     
     public function get_chart_data() {
         $data = $this->Main_model->get_services_count();
@@ -261,6 +257,41 @@ class Main_controller extends CI_Controller {
         $data['monthlyCategories'] = $this->Main_model->get_monthly_categories();
         return $data;
     }
+    public function updateCategory($id = null) {
+        if (!$id) {
+            show_error('ID is missing.', 500);
+        }
     
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp|webp';
+        $config['max_size'] = 10048;
+        $config['encrypt_name'] = TRUE;
+    
+        $this->load->library('upload', $config);
+        
+        $fileName = null; 
+    
+        if ($this->upload->do_upload('img')) {
+            $uploadData = $this->upload->data();
+            $fileName = $uploadData['file_name'];
+        } 
+    
+        $data = array(
+            'cat_name' => $this->input->post('cat_name'),
+            'slug' => $this->input->post('slug'),
+            'is_active' => $this->input->post('is_active')
+        );
+    
+       
+        if ($fileName) {
+            $data['img'] = $fileName;
+        }
+    
+        if ($this->Main_model->updateCategory($id, $data)) {
+            redirect('Main_controller/manageCategories');
+        } else {
+            show_error('Failed to update category.', 500);
+        }
+    }
 }
 ?>

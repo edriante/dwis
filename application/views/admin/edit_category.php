@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/manageusers.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/dark.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/modal.css'); ?>">
     <title>Edit Category</title>
 </head>
 <body>
@@ -56,18 +57,40 @@
             </a>
         </div>
             <div class="container mt-4">
-                <form action="<?= site_url('Main_controller/updateCategory/' . $category['cat_id']); ?>" method="post">
+                <form action="<?= site_url('Main_controller/updateCategory/' . $category['cat_id']); ?>" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?= htmlspecialchars($category['cat_id'], ENT_QUOTES, 'UTF-8'); ?>">
 
                     <div class="mb-3">
                         <label for="cat_name" class="form-label">Category Name:</label>
                         <input type="text" class="form-control" id="cat_name" name="cat_name" value="<?= htmlspecialchars($category['cat_name'], ENT_QUOTES, 'UTF-8'); ?>" required>
                     </div>
+                    
+<div class="mb-3">
+    <label for="editImage" class="form-label">Current Image:</label><br> 
 
-                    <div class="mb-3">
-                        <label for="img" class="form-label">Image URL:</label>
-                        <input type="text" class="form-control" id="img" name="img" value="<?= htmlspecialchars($category['img'], ENT_QUOTES, 'UTF-8'); ?>" required>
-                    </div>
+
+           
+                         
+
+    
+    <img src="<?= base_url('uploads/' . $category['img']); ?>" 
+         alt="Service Image" 
+         class="image-preview" 
+         id="previewImage">
+</div>
+
+
+<div id="imageModal" class="modal">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <img id="modalImage">
+    
+   
+</div>
+<div class="mb-3">
+        <label for="editImage" class="form-label">Upload New Image (Optional):</label>
+        <input type="file" class="form-control" id="editImage" name="img">
+    </div>
+
 
                     <div class="mb-3">
                         <label for="slug" class="form-label">Slug:</label>
@@ -93,5 +116,6 @@
     <script src="<?= base_url('assets/js/logout.js'); ?>"></script>
     <script src="<?= base_url('assets/js/dark.js'); ?>"></script>
     <script src="<?= base_url('assets/js/script.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/modal.js'); ?>"></script>
 </body>
 </html>

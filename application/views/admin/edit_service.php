@@ -8,6 +8,7 @@
     <link rel="icon" href="<?= base_url('assets/img/download (2).png'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/dark.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/modal.css'); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
@@ -56,30 +57,56 @@
                 </a>
             </div>
             <div class="container mt-4">
-                <form action="<?= site_url('Main_controller/update_service/' . $service['id']); ?>" method="post">
-                    <input type="hidden" name="id" value="<?= $service['id']; ?>">
-                    <div class="mb-3">
-                        <label for="serviceName" class="form-label">Service Name:</label>
-                        <input type="text" class="form-control" id="serviceName" name="name" value="<?= $service['name']; ?>" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="serviceDescription" class="form-label">Description:</label>
-                        <textarea class="form-control" id="serviceDescription" name="description" required><?= $service['description']; ?></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="servicePrice" class="form-label">Price:</label>
-                        <input type="text" class="form-control" id="servicePrice" name="price" value="<?= $service['price']; ?>" required>
-                    </div>
+            <form action="<?= site_url('Main_controller/update_service/' . $service['id']); ?>" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<?= $service['id']; ?>">
 
-                    <div class="mb-3">
-                        <label for="serviceStatus" class="form-label">Status:</label>
-                        <select class="form-control" id="serviceStatus" name="status" required>
-                            <option value="Active" <?= $service['status'] == 'Active' ? 'selected' : ''; ?>>Active</option>
-                            <option value="Inactive" <?= $service['status'] == 'Inactive' ? 'selected' : ''; ?>>Inactive</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Update Service</button>
-                </form>
+    <div class="mb-3">
+        <label for="serviceName" class="form-label">Service Name:</label>
+        <input type="text" class="form-control" id="serviceName" name="name" value="<?= $service['name']; ?>" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="serviceDescription" class="form-label">Description:</label>
+        <textarea class="form-control" id="serviceDescription" name="description" required><?= $service['description']; ?></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="servicePrice" class="form-label">Price:</label>
+        <input type="text" class="form-control" id="servicePrice" name="price" value="<?= $service['price']; ?>" required>
+    </div>
+
+   
+<div class="mb-3">
+    <label for="editImage" class="form-label">Current Image:</label><br>
+    <img src="<?= base_url('uploads/' . $service['img']); ?>" 
+         alt="Service Image" 
+         class="image-preview" 
+         id="previewImage">
+</div>
+
+
+<div id="imageModal" class="modal">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <img id="modalImage">
+    
+   
+</div>
+<div class="mb-3">
+        <label for="editImage" class="form-label">Upload New Image (Optional):</label>
+        <input type="file" class="form-control" id="editImage" name="img">
+    </div>
+
+    <div class="mb-3">
+        <label for="serviceStatus" class="form-label">Status:</label>
+        <select class="form-control" id="serviceStatus" name="status" required>
+            <option value="Active" <?= $service['status'] == 'Active' ? 'selected' : ''; ?>>Active</option>
+            <option value="Inactive" <?= $service['status'] == 'Inactive' ? 'selected' : ''; ?>>Inactive</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Service</button>
+</form>
+
             </div>
         </main>
     </section>
@@ -89,5 +116,6 @@
     <script src="<?= base_url('assets/js/script.js'); ?>"></script>
     <script src="<?= base_url('assets/js/logout.js'); ?>"></script>
     <script src="<?= base_url('assets/js/dark.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/modal.js'); ?>"></script>
 </body>
 </html>
