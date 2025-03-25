@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/dark.css'); ?>">
     <link rel="icon" href= "<?= base_url('assets/img/download (2).png'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
-	<title>Admin</title>
+	<title>Users</title>
 </head>
 <body>
 	<!-- SIDEBAR -->

@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="<?= base_url('assets/css/manageusers.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/dark.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
-	<title>Admin</title>
+	<title>Categories</title>
 </head>
 <body>
 	<!-- SIDEBAR -->

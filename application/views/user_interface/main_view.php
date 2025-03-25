@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/dashboard.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/dark.css'); ?>"> 
-    <title>Admin</title>
+    <title>Admin Dashboard</title>
 </head>
 <body>
     <!-- SIDEBAR -->
