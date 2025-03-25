@@ -293,5 +293,22 @@ class Main_controller extends CI_Controller {
             show_error('Failed to update category.', 500);
         }
     }
+
+    public function profile() {
+        $admin_id = $this->session->userdata('admin_id'); // Ensure session is storing ID
+        if (!$admin_id) {
+            redirect('Auth/login'); // Redirect to login if no admin is logged in
+        }
+    
+        $admin = $this->Main_model->getAdminById($admin_id);
+    
+        if (!$admin) {
+            show_error("Admin not found in database!", 404); // Debugging purpose
+        }
+    
+        $data['admin'] = $admin;
+        $this->load->view('user_interface/profile_view', $data);
+    }
+    
 }
 ?>

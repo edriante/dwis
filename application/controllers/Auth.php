@@ -69,7 +69,7 @@ class Auth extends CI_Controller {
                 'password' => $password_hash,
             ];
 
-            $inserted = $this->Admin_model->insert_admin($data['username'], $data['password']);
+            $inserted = $this->Admin_model->insert_admin($data['username'], $data['password'], $data['email']);
             
             if ($inserted) {
                 $this->session->set_flashdata('success', 'Registration successful!');

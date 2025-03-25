@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/dashboard.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/dark.css'); ?>"> 
-    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="<?= base_url('assets/css/manageusers.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/modal.css'); ?>">
+    <title>Profile</title>
 </head>
 <body>
     <!-- SIDEBAR -->
@@ -20,7 +22,7 @@
             <span class="text">dmin</span>
         </a>
         <ul class="side-menu top">
-            <li class="active">
+            <li>
                 <a href="<?= site_url('Main_controller/index'); ?>">
                     <i class="bi bi-house-door"></i>
                     <span class="text">Dashboard</span>
@@ -74,78 +76,56 @@
             <form action="#"></form>
             <input type="checkbox" id="switch-mode" hidden>
             <label for="switch-mode" class="switch-mode"></label>
-            <a href="#" class="notification"></a>
-            <a href="profile" class="profile">
+            <a href="#" class="profile">
                 <img src="<?= base_url('assets/img/logo.png'); ?>" alt="Profile">
             </a>
         </nav>
 
         <!-- MAIN -->
         <main>
-            <h2 class="custom-dashboard-title">Dashboard</h2>
-            <div class="custom-dashboard-cards">
-                <div class="custom-card">
-                    <div class="custom-card-body">
-                        <div class="custom-card-icon bg-purple"><i class="bi bi-people"></i></div>
-                        <div class="custom-card-content">
-                            <h5>Users</h5>
-                            <h2><?php echo number_format($totalUsers); ?></h2>
-                            <p class="text-<?php echo ($usersToday > 0) ? 'success' : 'danger'; ?>">
-                                <?php echo ($usersToday > 0) ? '+' . $usersToday . ' users today' : '0 users today'; ?>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="custom-card">
-                    <div class="custom-card-body">
-                        <div class="custom-card-icon bg-red"><i class="bi bi-gear"></i></div>
-                        <div class="custom-card-content">
-                            <h5>Services</h5>
-                            <h2><?php echo number_format($totalService); ?></h2>
-                            <p class="text-<?php echo ($recentServices > 0) ? 'success' : 'danger'; ?>">
-                                <?php echo ($recentServices > 0) ? '+' . $recentServices . ' services added this week' : '0 services added this week'; ?>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="custom-card">
-                    <div class="custom-card-body">
-                        <div class="custom-card-icon bg-green"><i class="bi bi-cash"></i></div>
-                        <div class="custom-card-content">
-                            <h5>Profit</h5>
-                            <h2>₱<?php echo number_format($totalPrice, 2); ?></h2>
-                            <p class="text-success">Total price of all services</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="custom-card">
-    <div class="custom-card-body">
-        <div class="custom-card-icon bg-purple"><i class="bi bi-folder fill"></i></div>
-        <div class="custom-card-content">
-            <h5>Categories</h5>
-            <h2><?php echo number_format($totalCategories); ?></h2>
-            <p class="text-<?php echo ($monthlyCategories > 0) ? 'success' : 'danger'; ?>">
-                <?php echo ($monthlyCategories > 0) ? '+' . $monthlyCategories . ' new categories this month' : '0 new categories this month'; ?>
-            </p>
+        <div class="edit-user-header">
+            <h2 class="custom-dashboard-title">Profile</h2>
+            <a href="<?= site_url('Main_controller'); ?>" class="exit-button">
+                <i class="bi bi-x-circle"></i>
+            </a>
         </div>
-    </div>
-</div>
-           </div>
-
-            <div class="chart-containerd-flex flex-column flex-md-row justify-content-between">
-                <div class="chart-box">
-                    <h3>Services</h3>
-                    <canvas id="myChart"></canvas>
-                </div>
-                <div class="chart-box">
-                    <h3>Users</h3>
-                    <canvas id="mySecondChart"></canvas>
+            <div class="container mt-4">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card shadow-lg p-4">
+                            <div class="text-center">
+                                <img src="<?= base_url('assets/img/logo.png'); ?>" class="rounded-circle" width="150">
+                                <h4 class="mt-3"><?= isset($admin['username']) ? $admin['username'] : 'N/A'; ?></h4>
+                                <p class="text-muted"><?= isset($admin['email']) ? $admin['email'] : 'No email provided'; ?></p>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5>Username:</h5>
+                                    <p><?= isset($admin['username']) ? $admin['username'] : 'N/A'; ?></p>
+                                </div>
+                                <div class="col-6">
+                                    <h5>Email:</h5>
+                                    <p><?= isset($admin['email']) ? $admin['email'] : 'N/A'; ?></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5>Joined:</h5>
+                                    <p><?= isset($admin['created_at']) ? date("F d, Y", strtotime($admin['created_at'])) : 'N/A'; ?></p>
+                                </div>
+                                <div class="col-6">
+                                    <h5>Password:</h5>
+                                    <p>******** <!--<a href="<?= site_url('Main_controller/changePassword'); ?>">Change</a> --></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
     </section>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

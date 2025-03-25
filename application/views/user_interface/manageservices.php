@@ -74,8 +74,8 @@
             <input type="checkbox" id="switch-mode" hidden>
             <label for="switch-mode" class="switch-mode"></label>
             <a href="#" class="notification"></a>
-            <a href="#" class="profile">
-                <img src="../assets/img/logo.png" alt="Profile">
+            <a href="profile" class="profile">
+                <img src="<?= base_url('assets/img/logo.png'); ?>" alt="Profile">
             </a>
         </nav>
 

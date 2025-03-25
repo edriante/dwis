@@ -176,6 +176,11 @@ class Main_model extends CI_Model {
         return $this->db->count_all_results('categories');
     }
     
+    public function getAdminById($id) {
+        $query = $this->db->get_where('admin', ['adm_id' => $id]);
+        return $query->row_array(); // Return array instead of object
+    }
+    
 
 }
 ?>

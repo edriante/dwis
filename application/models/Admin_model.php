@@ -22,11 +22,12 @@ class Admin_model extends CI_Model {
         return $result;
     }
 
-    public function insert_admin($username, $password) {
+    public function insert_admin($username, $password, $email) {
         
         $data = [
             'username' => $username,
-            'password' => $password
+            'password' => $password,
+            'email' => $email
         ];
         
         return $this->db->insert('admin', $data);

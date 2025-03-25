@@ -16,6 +16,8 @@ $route['Main_controller/edit_service/(:num)'] = 'Main_controller/edit_service/$1
 $route['Main_controller/update_service'] = 'Main_controller/update_service';
 $route['get_chart_data'] = 'Main_controller/get_chart_data';
 $route['get_users_data'] = 'Main_controller/get_users_data';
+$route['profile'] = 'Main_controller/profile';
+
 
 // API Routes
 $route['api/admin']['GET'] = 'api/admin/index';
