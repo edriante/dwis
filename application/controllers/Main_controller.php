@@ -5,6 +5,7 @@ class Main_controller extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->library('session');
         $this->load->model('Main_model');
     }
 
@@ -27,9 +28,21 @@ class Main_controller extends CI_Controller {
 
         $data['monthlyCategories'] = $this->Main_model->countMonthlyCategories();
 
+        $user_id = $this->session->userdata('admin_id'); 
+        $data['img'] = $this->Main_model->getUserProfileImage($user_id);
+
         $this->load->view('user_interface/main_view', $data);
     }
-
+    public function adm_profile() {
+        $user_id = $this->session->userdata('admin_id'); // Assuming 'adm_id' is the session key
+        $data['img'] = $this->Main_model->getUserProfileImage($user_id);
+    
+        // Debugging with var_dump
+        var_dump($data['img']); 
+        exit; 
+    
+        $this->load->view('user_interface/main_view', $data);
+    }
     
     public function manageUsers() {
         $data['title'] = 'Manage Users';
@@ -295,19 +308,70 @@ class Main_controller extends CI_Controller {
     }
 
     public function profile() {
-        $admin_id = $this->session->userdata('admin_id'); // Ensure session is storing ID
+        $admin_id = $this->session->userdata('admin_id'); 
         if (!$admin_id) {
-            redirect('Auth/login'); // Redirect to login if no admin is logged in
+            redirect('Auth/login'); 
         }
     
         $admin = $this->Main_model->getAdminById($admin_id);
     
         if (!$admin) {
-            show_error("Admin not found in database!", 404); // Debugging purpose
+            show_error("Admin not found in database!", 404); 
         }
     
         $data['admin'] = $admin;
         $this->load->view('user_interface/profile_view', $data);
+    }
+    public function update_profile_picture() {
+        $this->load->library('session');
+    
+      
+        $adm_id = $this->session->userdata('admin_id');
+    
+       
+        if (empty($adm_id)) {
+            echo 'Session adm_id is not set. Please log in.';
+            echo '<pre>';
+            print_r($this->session->userdata());
+            echo '</pre>';
+            exit;
+        }
+    
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|webp';
+        $config['max_size'] = 10048;  
+        $config['encrypt_name'] = TRUE; 
+    
+        $this->load->library('upload', $config);
+    
+        
+        if (!$this->upload->do_upload('img')) {
+            $error = $this->upload->display_errors();
+            show_error($error, 500);
+        } else {
+            $uploadData = $this->upload->data();
+            $fileName = $uploadData['file_name'];  
+    
+            
+            if ($this->delete_previous_image($adm_id) && $this->Main_model->update_profile_picture($fileName, $adm_id)) {
+                redirect('Main_controller/profile');
+            } else {
+                echo 'Failed to update profile picture in the database.';
+            }
+        }
+    }
+    
+    
+    private function delete_previous_image($adm_id) {
+        $this->load->model('Main_model');
+        $current_img = $this->Main_model->get_profile_picture($adm_id);
+    
+        if (!empty($current_img) && file_exists('./uploads/' . $current_img)) {
+            unlink('./uploads/' . $current_img);  
+            return true;
+        }
+    
+        return true;  
     }
     
 }

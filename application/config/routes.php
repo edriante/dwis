@@ -17,6 +17,9 @@ $route['Main_controller/update_service'] = 'Main_controller/update_service';
 $route['get_chart_data'] = 'Main_controller/get_chart_data';
 $route['get_users_data'] = 'Main_controller/get_users_data';
 $route['profile'] = 'Main_controller/profile';
+$route['admin_profile'] = 'adm_profile/profile';
+
+
 
 
 // API Routes

@@ -78,10 +78,10 @@
 			<label for="switch-mode" class="switch-mode"></label>
 			<a href="#" class="notification">
 				
-			</a>
-			<a href="profile" class="profile">
-                <img src="<?= base_url('assets/img/logo.png'); ?>" alt="Profile">
-            </a>
+            <a href="profile" class="profile">
+            <img src="<?= !empty($img['img']) ? base_url('uploads/' . $img['img']) : base_url('assets/img/logo.png'); ?>" alt="Admin Profile">
+
+                        </a>
 		</nav>
 
         <main>

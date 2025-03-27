@@ -8,6 +8,7 @@ class Auth extends CI_Controller {
         parent::__construct();
         $this->load->model('Admin_model');
         $this->load->library('form_validation'); 
+        $this->load->library('session');
         $this->jwt = new JwtAuth();
     }
 
@@ -21,10 +22,9 @@ class Auth extends CI_Controller {
         $password = $this->input->post('password');
         
         $admin = $this->Admin_model->get_admin($username);
-        
-        
+
         if ($admin && password_verify($password, $admin['password'])) {
-            $this->session->set_userdata('admin_id', $admin['adm_id']);
+            $this->set_admin_session($admin);
             redirect('main_controller');
         } else {
             $this->session->set_flashdata('error', 'Invalid login credentials.');
@@ -32,55 +32,20 @@ class Auth extends CI_Controller {
         }
     }
 
+    private function set_admin_session($admin) {
+        $session_data = [
+            'admin_id' => $admin['adm_id'],
+            'username' => $admin['username'],
+            'is_logged_in' => true
+        ];
+        $this->session->set_userdata($session_data);
+    }
         
     public function register() {
         $this->load->view('auth/register');
     }
 
-    public function register_process() {
-        
-        $this->form_validation->set_rules('username', 'Username', 'required|is_unique[admin.username]');
-        $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[admin.email]');
-
-        if ($this->form_validation->run() === FALSE) {
-            $this->session->set_flashdata('error', validation_errors());
-            redirect('auth/register');
-        } else {
-            $password = $this->input->post('password');
-
-           
-            if (empty($password)) {
-                $this->session->set_flashdata('error', 'Password is required.');
-                redirect('auth/register');
-            }
-
-            $password_hash = password_hash($password, PASSWORD_BCRYPT);
-
-            
-            if (!$password_hash) {
-                $this->session->set_flashdata('error', 'Password hashing failed.');
-                redirect('auth/register');
-            }
     
-            $data = [
-                'username' => $this->input->post('username'),
-                'email' => $this->input->post('email'),
-                'password' => $password_hash,
-            ];
-
-            $inserted = $this->Admin_model->insert_admin($data['username'], $data['password'], $data['email']);
-            
-            if ($inserted) {
-                $this->session->set_flashdata('success', 'Registration successful!');
-                redirect('auth/login');
-            } else {
-                $this->session->set_flashdata('error', 'Registration failed!');
-                redirect('auth/register');
-            }
-        }
-    }
-
     public function logout() {
         $this->session->unset_userdata('adm_id');
         $this->session->sess_destroy();

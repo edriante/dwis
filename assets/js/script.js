@@ -30,12 +30,6 @@ if (menuBar && sidebar) {
             menuBar.classList.remove('hide');
         }
     }
-
-   
-    handleResize();
-
-    
-    window.addEventListener('resize', handleResize);
 }
 
 

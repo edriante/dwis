@@ -176,11 +176,29 @@ class Main_model extends CI_Model {
         return $this->db->count_all_results('categories');
     }
     
-    public function getAdminById($id) {
-        $query = $this->db->get_where('admin', ['adm_id' => $id]);
-        return $query->row_array(); // Return array instead of object
+     
+      public function getAdminById($admin_id) {
+        $this->db->where('adm_id', $admin_id);  
+        $query = $this->db->get('admin');  
+        return $query->row_array();  
+    }
+
+    
+   
+    public function update_profile_picture($img_path, $adm_id) {
+        $this->db->set('img', $img_path);
+        $this->db->where('adm_id', $adm_id);
+    
+        return $this->db->update('admin');
+    }
+    public function getUserProfileImage($user_id) {
+        $this->db->select('img');
+        $this->db->from('admin');
+        $this->db->where('adm_id', $user_id);
+        $query = $this->db->get();
+        
+        return $query->row_array();
     }
     
-
 }
 ?>
