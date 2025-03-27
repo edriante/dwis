@@ -47,6 +47,8 @@ class Main_controller extends CI_Controller {
     public function manageUsers() {
         $data['title'] = 'Manage Users';
         $data['users'] = $this->Main_model->getUsers();
+        $user_id = $this->session->userdata('admin_id'); 
+        $data['img'] = $this->Main_model->getUserProfileImage($user_id);
         $this->load->view('user_interface/manageusers', $data);
     }
 
@@ -80,6 +82,8 @@ class Main_controller extends CI_Controller {
     public function manageCategories() {
         $data['title'] = 'Manage Categories';
         $data['categories'] = $this->Main_model->getCategories();
+        $user_id = $this->session->userdata('admin_id'); 
+        $data['img'] = $this->Main_model->getUserProfileImage($user_id);
         $this->load->view('user_interface/category', $data);
     }
 
@@ -90,6 +94,8 @@ class Main_controller extends CI_Controller {
         if (!$data['category']) {
             show_404(); 
         }
+        $user_id = $this->session->userdata('admin_id'); 
+        $data['img'] = $this->Main_model->getUserProfileImage($user_id);
         $this->load->view('admin/edit_category', $data); 
     }
 
@@ -109,17 +115,22 @@ class Main_controller extends CI_Controller {
     public function manageServices() {
         $data['title'] = 'Manage Services';
         $data['services'] = $this->Main_model->getServices();
+        $user_id = $this->session->userdata('admin_id'); 
+        $data['img'] = $this->Main_model->getUserProfileImage($user_id);
         $this->load->view('user_interface/manageservices', $data);
     }
 
     public function addServices() {
         $data['title'] = 'Add Services';
         $data['categories'] = $this->Main_model->get_categories(); 
-    
+        $user_id = $this->session->userdata('admin_id'); 
+        $data['img'] = $this->Main_model->getUserProfileImage($user_id);
         $this->load->view('user_interface/addservices', $data);
     }
     public function addCategories() {
         $data['title'] = 'Add Categories';
+        $user_id = $this->session->userdata('admin_id'); 
+        $data['img'] = $this->Main_model->getUserProfileImage($user_id);
         $this->load->view('user_interface/add_category', $data);
     }
     public function addCategory() {
@@ -127,7 +138,8 @@ class Main_controller extends CI_Controller {
         $config['allowed_types'] = 'gif|jpg|png';
         $config['max_size'] = 10048; 
         $config['encrypt_name'] = TRUE;
-    
+        $user_id = $this->session->userdata('admin_id'); 
+        $data['img'] = $this->Main_model->getUserProfileImage($user_id);
         $this->load->library('upload', $config);
     
         if (!$this->upload->do_upload('img')) {
@@ -157,7 +169,8 @@ class Main_controller extends CI_Controller {
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp|webp';
         $config['max_size'] = 10048; 
         $config['encrypt_name'] = TRUE;
-    
+        $user_id = $this->session->userdata('admin_id'); 
+        $data['img'] = $this->Main_model->getUserProfileImage($user_id);
         $this->load->library('upload', $config);
         
         if (!$this->upload->do_upload('img')) {
@@ -198,11 +211,15 @@ class Main_controller extends CI_Controller {
 
     public function edit_user($id) {
         $data['user'] = $this->Main_model->get_user_by_id($id);
+        $user_id = $this->session->userdata('admin_id'); 
+        $data['img'] = $this->Main_model->getUserProfileImage($user_id);
         $this->load->view('admin/edit_user', $data);
     }
     
     public function update_user() {
         $this->Main_model->update_user($this->input->post());
+        $user_id = $this->session->userdata('admin_id'); 
+        $data['img'] = $this->Main_model->getUserProfileImage($user_id);
         redirect('Main_controller/manageUsers');
     }
     
@@ -214,6 +231,8 @@ class Main_controller extends CI_Controller {
         }
     
         $data['services'] = $this->Main_model->getServices(); 
+        $user_id = $this->session->userdata('admin_id'); 
+        $data['img'] = $this->Main_model->getUserProfileImage($user_id);
         $this->load->view('admin/edit_service', $data);
     }    
     
@@ -226,7 +245,8 @@ class Main_controller extends CI_Controller {
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp|webp';
         $config['max_size'] = 10048;
         $config['encrypt_name'] = TRUE;
-    
+        $user_id = $this->session->userdata('admin_id'); 
+        $data['img'] = $this->Main_model->getUserProfileImage($user_id);
         $this->load->library('upload', $config);
         
         $fileName = null; 
@@ -279,7 +299,8 @@ class Main_controller extends CI_Controller {
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp|webp';
         $config['max_size'] = 10048;
         $config['encrypt_name'] = TRUE;
-    
+        $user_id = $this->session->userdata('admin_id'); 
+        $data['img'] = $this->Main_model->getUserProfileImage($user_id);
         $this->load->library('upload', $config);
         
         $fileName = null; 
@@ -318,7 +339,10 @@ class Main_controller extends CI_Controller {
         if (!$admin) {
             show_error("Admin not found in database!", 404); 
         }
-    
+        
+        $user_id = $this->session->userdata('admin_id'); 
+        $data['img'] = $this->Main_model->getUserProfileImage($user_id);
+
         $data['admin'] = $admin;
         $this->load->view('user_interface/profile_view', $data);
     }
@@ -341,7 +365,8 @@ class Main_controller extends CI_Controller {
         $config['allowed_types'] = 'gif|jpg|jpeg|png|bmp|webp';
         $config['max_size'] = 10048;  
         $config['encrypt_name'] = TRUE; 
-    
+        $user_id = $this->session->userdata('admin_id'); 
+        $data['img'] = $this->Main_model->getUserProfileImage($user_id);
         $this->load->library('upload', $config);
     
         

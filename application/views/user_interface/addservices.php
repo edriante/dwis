@@ -71,19 +71,15 @@
     <!-- CONTENT -->
     <section id="content">
         <nav>
-			<i class="bi bi-list"></i>
-			
-			<form action="#">
-				
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification"></a>
+            <i class="bi bi-list"></i>
+            <form action="#"></form>
+            <input type="checkbox" id="switch-mode" hidden>
+            <label for="switch-mode" class="switch-mode"></label>
+            <a href="#" class="notification"></a>
             <a href="profile" class="profile">
-            <img src="<?= !empty($img['img']) ? base_url('uploads/' . $img['img']) : base_url('assets/img/logo.png'); ?>" alt="Admin Profile">
-
-                        </a>
-		</nav>
+                <img src="<?= !empty($img['img']) ? base_url('uploads/' . $img['img']) : base_url('assets/img/logo.png'); ?>" alt="Admin Profile">
+            </a>
+        </nav>
 
         <main>
             <h2 class="custom-dashboard-title">Add New Service</h2>
