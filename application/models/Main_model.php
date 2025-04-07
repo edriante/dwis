@@ -199,6 +199,19 @@ class Main_model extends CI_Model {
         
         return $query->row_array();
     }
+    public function get_profile_picture($adm_id) {
+        $this->db->select('img'); // Change to your actual column name
+        $this->db->from('admin'); // Change to your actual table name
+        $this->db->where('adm_id', $adm_id); // Replace 'id' with your actual primary key column
+    
+        $query = $this->db->get();
+    
+        if ($query->num_rows() > 0) {
+            return $query->row()->profile_picture; // Return the filename or path
+        }
+    
+        return null;
+    }
     
 }
 ?>
